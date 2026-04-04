@@ -6,10 +6,10 @@ import tajMahal from './assets/tajMahal.png'
 //#fa6832
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col gap-4">
 
-      <header className="w-full h-16 flex items-center justify-center">
-        <div className="flex-1 h-full flex justify-evenly items-center px-20">
+      <header className="w-full h-20 flex items-center justify-center border-b-3 border-gray-300">
+        <div className="flex-1 h-full flex gap-8 items-center pl-40">
           <img src={bikanews} alt="logo" className="w-32 h-24" />
           <nav className="font-bold text-lg cursor-pointer">Inicio</nav>
           <nav className="font-bold text-lg cursor-pointer">Política</nav>
@@ -25,8 +25,8 @@ function App() {
         </div>
       </header>
 
-      <main className='flex-1 bg-red-700 flex flex-col items-center overflow-y-auto'>
-        <div className='h-140 w-220 overflow-hidden relative group'>
+      <main className='flex-1 flex flex-col items-center overflow-y-auto overflow-x-hidden'>
+        <div className='h-[clamp(200px,45vw,750px)] w-[clamp(500px,80vw,1400px)] overflow-hidden relative group rounded-2xl'>
           <img src={tajMahal} className='object-cover inset-0 h-full w-full group-hover:scale-110 transition-transform duration-500' />
           <div className='absolute inset-0 bg-linear-to-t from-black to-transparent w-full h-full'></div>
           <div className='h-full w-full inset-0 p-4 absolute z-10'>
@@ -43,6 +43,9 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+        <div className='w-350 flex flex-col'>
+
         </div>
       </main>
     </div>
