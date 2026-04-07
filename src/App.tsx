@@ -44,13 +44,45 @@ function App() {
             </div>
           </div>
         </div>
-        <div className='w-350 h-auto flex flex-row'>
-          <div className='flex-2 flex flex-col'>
+        <div className='w-[clamp(500px,80vw,1400px)] h-auto flex flex-row'>
+          <div className='flex-2 flex flex-col gap-8'>
             <div className='flex flex-row border-b-2 border-[#fa6832] pb-2'>
               <div className='h-auto w-1 bg-[#fa6832] rounded-4xl' />
               <h1 className='font-bold p-2 text-xl text-[#fa6832]'>Últimas notícias</h1>
             </div>
-            <div className='grid grid-cols-2 w-full h-auto gap-6'>
+            <div className='grid grid-cols-2 w-full h-auto gap-6 flex-col responsive-card'>
+              <div className='flex flex-1 flex-col h-[25svw] shadow-[0_2px_6px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden group hover:cursor-pointer origin-top hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] hover:scale-y-[0.98] transition duration-500'>                
+                <div className='h-[45%] w-full'>
+                  <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
+                </div>
+                <div className='flex flex-col h-full w-full px-9 justify-evenly'>
+                  <div className='bg-purple-500 rounded-2xl w-fit'>
+                    <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
+                  </div>
+                  <h1 className='text-2xl font-medium group-hover:text-[#fa6832]'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
+                  <div className='flex flex-row gap-2 text-gray-600'>
+                    <Clock className='h-4 w-4' />
+                    <h3 className='text-xs'>Há 1 hora</h3>
+                  </div>
+                </div>
+              </div>
+              <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
+                <div className='h-1/2 w-full'>
+                  <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+                </div>
+                <div className='flex flex-col h-full w-full px-8 justify-evenly'>
+                  <div className='bg-purple-500 rounded-2xl w-fit'>
+                    <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
+                  </div>
+                  <h1 className='text-2xl font-bold'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
+                  <div className='flex flex-row gap-2 text-gray-600'>
+                    <Clock className='h-4 w-4' />
+                    <h3 className='text-xs'>Há 1 hora</h3>
+                  </div>
+                </div>
+              </div>
               <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
                 <div className='h-1/2 w-full'>
                   <img className='h-full w-full object-cover' src={tajMahal} alt="" />
@@ -67,7 +99,54 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className='flex-1 h-120 shadow-2xl rounded-2xl'></div>
+              <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
+                <div className='h-1/2 w-full'>
+                  <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+                </div>
+                <div className='flex flex-col h-full w-full px-8 justify-evenly'>
+                  <div className='bg-purple-500 rounded-2xl w-fit'>
+                    <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
+                  </div>
+                  <h1 className='text-xl font-bold'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
+                  <div className='flex flex-row gap-2 text-gray-600'>
+                    <Clock className='h-4 w-4' />
+                    <h3 className='text-xs'>Há 1 hora</h3>
+                  </div>
+                </div>
+              </div>
+              <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
+                <div className='h-1/2 w-full'>
+                  <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+                </div>
+                <div className='flex flex-col h-full w-full px-8 justify-evenly'>
+                  <div className='bg-purple-500 rounded-2xl w-fit'>
+                    <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
+                  </div>
+                  <h1 className='text-xl font-bold'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
+                  <div className='flex flex-row gap-2 text-gray-600'>
+                    <Clock className='h-4 w-4' />
+                    <h3 className='text-xs'>Há 1 hora</h3>
+                  </div>
+                </div>
+              </div>
+              <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
+                <div className='h-1/2 w-full'>
+                  <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+                </div>
+                <div className='flex flex-col h-full w-full px-8 justify-evenly'>
+                  <div className='bg-purple-500 rounded-2xl w-fit'>
+                    <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
+                  </div>
+                  <h1 className='text-xl font-bold'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
+                  <div className='flex flex-row gap-2 text-gray-600'>
+                    <Clock className='h-4 w-4' />
+                    <h3 className='text-xs'>Há 1 hora</h3>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className='flex-1 bg-amber-900 h-6'></div>

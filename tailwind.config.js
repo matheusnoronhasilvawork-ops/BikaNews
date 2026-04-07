@@ -8,6 +8,9 @@ export default {
       colors: {
         primary: "#fa6832",
       },
+      screens: {
+        '3xl': '1700px',
+      },
     },
   },
   plugins: [],
