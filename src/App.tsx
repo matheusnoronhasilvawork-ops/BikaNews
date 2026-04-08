@@ -1,6 +1,6 @@
 import './App.css'
 import bikanews from './assets/bikanews.png'
-import { Search, Bell, User, Clock, TrendingUp } from 'lucide-react'
+import { Search, Bell, User, Clock, TrendingUp, Newspaper } from 'lucide-react'
 import tajMahal from './assets/tajMahal.png'
 
 //#fa6832
@@ -149,8 +149,8 @@ function App() {
               </div>
             </div>
           </div>
-          <div className='flex-1 flex-col shadow-2xl bg-white h-fit pb-4 rounded-2xl box-border'>
-            <div className='w-full h-full flex flex-col px-10'>
+          <div className='flex flex-1 flex-col h-fit gap-8'>
+            <div className='w-full flex flex-col shadow-2xl bg-white pb-4 rounded-2xl px-10'>
               <div className='flex flex-row border-b-2 border-[#fa6832] pb-2 items-center'>
                 <TrendingUp className='h-full w-8 text-[#fa6832]' />
                 <h1 className='font-bold p-2 text-xl text-[#fa6832]'>Mais lidas</h1>
@@ -221,6 +221,19 @@ function App() {
                     <img className='h-full w-full object-cover' src={tajMahal} alt="" />
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className='bg-[#fa6732] w-full flex flex-col gap-8 rounded-2xl py-7 px-12 h-fit'>
+              <div className='flex flex-col gap-4 w-full'>
+                <div className='flex flex-row items-center self-start gap-4 w-fit'>
+                  <Newspaper className='text-white h-6 w-6' />
+                  <h1 className='text-white font-medium text-2xl'>Receba nossas notícias</h1>
+                </div>
+                <h2 className='text-white text-lg'>Inscreva-se para receber as principais notícias do dia diretamente no seu e-mail.</h2>
+              </div>
+              <div className='flex flex-col w-full gap-4'>
+                <input type="email" name="" placeholder='seuemail@gmail.com' id="" className='outline-none w-full h-12 bg-white p-4 rounded-md' />
+                <button className='w-full h-12 bg-white text-[#fa6732] rounded-md font-medium cursor-pointer text-lg'>Inscrever-se</button>
               </div>
             </div>
           </div>
