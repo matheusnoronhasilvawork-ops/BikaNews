@@ -1,6 +1,7 @@
 import './App.css'
 import bikanews from './assets/bikanews.png'
 import { Search, Bell, User, Clock, TrendingUp, Newspaper } from 'lucide-react'
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
 import tajMahal from './assets/tajMahal.png'
 
 //w-[clamp(500px,80vw,1400px)]
@@ -250,6 +251,54 @@ function App() {
           </div>
         </div>
       </main>
+      <footer className="w-full h-80 px-20 py-12 bg-[#020617] relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15),transparent_60%)]"></div>
+
+        <div className="relative w-full h-full flex flex-col">
+          <div className='flex flex-row w-full h-full text-white'>
+            <div className='flex flex-1 flex-col'>
+              <h3>Seu portal de informação confiável e atualizada 24 horas por dia. Notícias rápidas, ponto a ponto.</h3>
+            </div>
+            <div className='flex flex-1 flex-col'>
+              <div className='flex flex-col w-fit gap-1.5'>
+                <h3 className='text-[#fa6732]'>Seções</h3>
+                <div className='w-full h-1 bg-[#fa6732] rounded-2xl'/>
+              </div>
+              <ul className=''>
+                <li>Política</li>
+                <li>Economia</li>
+                <li>Tecnologia</li>
+                <li>Esportes</li>
+              </ul>
+            </div>
+            <div className='flex flex-1 flex-col'>
+              <h3>Instituição</h3>
+              <ul>
+                <li>Sobre nós</li>
+                <li>Contato</li>
+                <li>Política de Privacidade</li>
+                <li>Termos de uso</li>
+              </ul>
+            </div>
+            <div className='flex flex-1 flex-col'>
+              <h3>Redes Sociais</h3>
+              <div className='flex flex-row gap-4'>
+                <div className='bg-gray-700 text-white p-2 rounded-full'>
+                  <FaFacebook />
+                </div>
+                <div className='bg-gray-700 text-white p-2 rounded-full'>
+                  <FaTwitter />
+                </div>
+                <div className='bg-gray-700 text-white p-2 rounded-full'>
+                  <FaInstagram />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='w-[80%] h-1 bg-gray-600'></div>
+          <h4 className='text-gray-500'>© 2026 Bika News. Todos os direitos reservados. • Notícias Rápidas • Ponto a Ponto</h4>
+        </div>
+      </footer>
     </div>
   );
 }
