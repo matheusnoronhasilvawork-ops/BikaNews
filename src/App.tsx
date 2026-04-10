@@ -3,6 +3,7 @@ import bikanews from './assets/bikanews.png'
 import { Search, Bell, User, Clock, TrendingUp, Newspaper } from 'lucide-react'
 import tajMahal from './assets/tajMahal.png'
 
+//w-[clamp(500px,80vw,1400px)]
 //#fa6832
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       </header>
 
       <main className='flex-1 flex flex-col items-center overflow-y-auto overflow-x-hidden gap-6 pb-44'>
-        <div className='h-[clamp(200px,45vw,750px)] w-[clamp(500px,80vw,1400px)] overflow-hidden relative group rounded-2xl'>
+        <div className='h-[clamp(200px,45vw,750px)] w-[clamp(500px,95vw,1400px)] overflow-hidden relative group rounded-2xl'>
           <img src={tajMahal} className='object-cover inset-0 h-full w-full group-hover:scale-110 transition-transform duration-500' />
           <div className='absolute inset-0 bg-linear-to-t from-black to-transparent w-full h-full'></div>
           <div className='h-full w-full inset-0 p-4 absolute z-10'>
@@ -44,22 +45,22 @@ function App() {
             </div>
           </div>
         </div>
-        <div className='w-[clamp(500px,80vw,1400px)] h-auto flex flex-row gap-12'>
+        <div className='w-[clamp(500px,95vw,1400px)] h-auto flex flex-row max-xl:flex-col gap-12'>
           <div className='flex-2 flex flex-col gap-8'>
             <div className='flex flex-row border-b-2 border-[#fa6832] pb-2 items-center'>
-              <div className='h-full w-2 bg-[#fa6832] rounded-4xl' />
+              <div className='self-stretch w-2 bg-[#fa6832] rounded-4xl' />
               <h1 className='font-bold p-2 text-xl text-[#fa6832]'>Últimas notícias</h1>
             </div>
-            <div className='grid grid-cols-2 w-full h-auto gap-6 flex-col responsive-card'>
-              <div className='flex flex-1 flex-col h-[25svw] shadow-[0_2px_6px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden group hover:cursor-pointer origin-top hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] hover:scale-y-[0.98] transition duration-500'>
-                <div className='h-[45%] w-full'>
+            <div className='grid grid-cols-2 w-full h-auto gap-6 flex-col max-[745px]:flex max-[745px]:flex-col'>
+              <div className='flex flex-1 flex-col h-[clamp(200px,34vw,480px)] max-xl:min-h-120 shadow-[0_2px_6px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden group hover:cursor-pointer origin-top hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] hover:scale-y-[0.98] transition duration-500'>
+                <div className='h-[45%] w-full max-[745px]:h-70 max-[745px]:mb-3'>
                   <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                 </div>
-                <div className='flex flex-col h-full w-full px-9 justify-evenly'>
+                <div className='flex flex-col flex-1 w-full px-6 justify-evenly'>
                   <div className='bg-purple-500 rounded-2xl w-fit'>
                     <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
                   </div>
-                  <h1 className='text-2xl font-medium group-hover:text-[#fa6832]'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <h1 className='text-xl font-medium group-hover:text-[#fa6832]'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
                   <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
                   <div className='flex flex-row gap-2 text-gray-600'>
                     <Clock className='h-4 w-4' />
@@ -67,15 +68,15 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
-                <div className='h-1/2 w-full'>
-                  <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+              <div className='flex flex-1 flex-col h-[clamp(200px,34vw,480px)] max-xl:min-h-120 shadow-[0_2px_6px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden group hover:cursor-pointer origin-top hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] hover:scale-y-[0.98] transition duration-500'>
+                <div className='h-[45%] w-full max-[745px]:h-70 max-[745px]:mb-3'>
+                  <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                 </div>
-                <div className='flex flex-col h-full w-full px-8 justify-evenly'>
+                <div className='flex flex-col flex-1 w-full px-6 justify-evenly'>
                   <div className='bg-purple-500 rounded-2xl w-fit'>
                     <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
                   </div>
-                  <h1 className='text-2xl font-bold'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <h1 className='text-xl font-medium group-hover:text-[#fa6832]'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
                   <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
                   <div className='flex flex-row gap-2 text-gray-600'>
                     <Clock className='h-4 w-4' />
@@ -83,15 +84,15 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
-                <div className='h-1/2 w-full'>
-                  <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+              <div className='flex flex-1 flex-col h-[clamp(200px,34vw,480px)] max-xl:min-h-120 shadow-[0_2px_6px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden group hover:cursor-pointer origin-top hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] hover:scale-y-[0.98] transition duration-500'>
+                <div className='h-[45%] w-full max-[745px]:h-70 max-[745px]:mb-3'>
+                  <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                 </div>
-                <div className='flex flex-col h-full w-full px-8 justify-evenly'>
+                <div className='flex flex-col flex-1 w-full px-6 justify-evenly'>
                   <div className='bg-purple-500 rounded-2xl w-fit'>
                     <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
                   </div>
-                  <h1 className='text-xl font-bold'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <h1 className='text-xl font-medium group-hover:text-[#fa6832]'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
                   <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
                   <div className='flex flex-row gap-2 text-gray-600'>
                     <Clock className='h-4 w-4' />
@@ -99,15 +100,15 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
-                <div className='h-1/2 w-full'>
-                  <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+              <div className='flex flex-1 flex-col h-[clamp(200px,34vw,480px)] max-xl:min-h-120 shadow-[0_2px_6px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden group hover:cursor-pointer origin-top hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] hover:scale-y-[0.98] transition duration-500'>
+                <div className='h-[45%] w-full max-[745px]:h-70 max-[745px]:mb-3'>
+                  <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                 </div>
-                <div className='flex flex-col h-full w-full px-8 justify-evenly'>
+                <div className='flex flex-col flex-1 w-full px-6 justify-evenly'>
                   <div className='bg-purple-500 rounded-2xl w-fit'>
                     <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
                   </div>
-                  <h1 className='text-xl font-bold'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <h1 className='text-xl font-medium group-hover:text-[#fa6832]'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
                   <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
                   <div className='flex flex-row gap-2 text-gray-600'>
                     <Clock className='h-4 w-4' />
@@ -115,15 +116,15 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
-                <div className='h-1/2 w-full'>
-                  <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+              <div className='flex flex-1 flex-col h-[clamp(200px,34vw,480px)] max-xl:min-h-120 shadow-[0_2px_6px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden group hover:cursor-pointer origin-top hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] hover:scale-y-[0.98] transition duration-500'>
+                <div className='h-[45%] w-full max-[745px]:h-70 max-[745px]:mb-3'>
+                  <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                 </div>
-                <div className='flex flex-col h-full w-full px-8 justify-evenly'>
+                <div className='flex flex-col flex-1 w-full px-6 justify-evenly'>
                   <div className='bg-purple-500 rounded-2xl w-fit'>
                     <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
                   </div>
-                  <h1 className='text-xl font-bold'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <h1 className='text-xl font-medium group-hover:text-[#fa6832]'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
                   <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
                   <div className='flex flex-row gap-2 text-gray-600'>
                     <Clock className='h-4 w-4' />
@@ -131,15 +132,15 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className='flex flex-1 flex-col h-120 shadow-2xl rounded-2xl overflow-hidden'>
-                <div className='h-1/2 w-full'>
-                  <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+              <div className='flex flex-1 flex-col h-[clamp(200px,34vw,480px)] max-xl:min-h-120 shadow-[0_2px_6px_rgba(0,0,0,0.15)] rounded-2xl overflow-hidden group hover:cursor-pointer origin-top hover:shadow-[0_12px_28px_rgba(0,0,0,0.2)] hover:scale-y-[0.98] transition duration-500'>
+                <div className='h-[45%] w-full max-[745px]:h-70 max-[745px]:mb-3'>
+                  <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                 </div>
-                <div className='flex flex-col h-full w-full px-8 justify-evenly'>
+                <div className='flex flex-col flex-1 w-full px-6 justify-evenly'>
                   <div className='bg-purple-500 rounded-2xl w-fit'>
                     <h2 className='px-4 py-1 text-white'>TECNOLOGIA</h2>
                   </div>
-                  <h1 className='text-xl font-bold'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
+                  <h1 className='text-xl font-medium group-hover:text-[#fa6832]'>Inovação tecnológica revoluciona setor de saúde com IA</h1>
                   <p className='text-gray-600'>Novas ferramentas de inteligência artificial estão sendo implementadas em hospitais para...</p>
                   <div className='flex flex-row gap-2 text-gray-600'>
                     <Clock className='h-4 w-4' />
@@ -156,69 +157,79 @@ function App() {
                 <h1 className='font-bold p-2 text-xl text-[#fa6832]'>Mais lidas</h1>
               </div>
               <div className='flex flex-col'>
-                <div className='flex flex-row group h-32 w-full items-center gap-5'>
-                  <h1 className='text-4xl font-bold text-[#fa67325d]'>01</h1>
-                  <div className='flex flex-col gap-2'>
-                    <h2 className='font-medium'>Pesquisa revela hábitos de bla bla bla bla...</h2>
-                    <div className='flex flex-row gap-2 text-gray-600'>
-                      <Clock className='h-4 w-4' />
-                      <h3 className='text-xs'>Há 1 hora</h3>
+                <div className='flex flex-row group h-32 w-full items-center justify-around gap-5 group'>
+                  <div className='flex flex-row gap-5 items-center'>
+                    <h1 className='text-4xl font-bold text-[#fa67325d] group-hover:text-[#fa6732]'>01</h1>
+                    <div className='flex flex-col gap-2'>
+                      <h2 className='font-medium group-hover:text-[#fa6732]'>Pesquisa revela hábitos de bla bla bla bla...</h2>
+                      <div className='flex flex-row gap-2 text-gray-600'>
+                        <Clock className='h-4 w-4' />
+                        <h3 className='text-xs'>Há 1 hora</h3>
+                      </div>
                     </div>
                   </div>
                   <div className='h-25 min-w-25 rounded-md overflow-hidden'>
-                    <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+                    <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                   </div>
                 </div>
-                <div className='flex flex-row group h-32 w-full items-center gap-5'>
-                  <h1 className='text-4xl font-bold text-[#fa67325d]'>02</h1>
-                  <div className='flex flex-col gap-2'>
-                    <h2 className='font-medium'>Pesquisa revela hábitos de bla bla bla bla...</h2>
-                    <div className='flex flex-row gap-2 text-gray-600'>
-                      <Clock className='h-4 w-4' />
-                      <h3 className='text-xs'>Há 1 hora</h3>
+                <div className='flex flex-row group h-32 w-full items-center justify-around gap-5 group'>
+                  <div className='flex flex-row gap-5 items-center'>
+                    <h1 className='text-4xl font-bold text-[#fa67325d] group-hover:text-[#fa6732]'>01</h1>
+                    <div className='flex flex-col gap-2'>
+                      <h2 className='font-medium group-hover:text-[#fa6732]'>Pesquisa revela hábitos de bla bla bla bla...</h2>
+                      <div className='flex flex-row gap-2 text-gray-600'>
+                        <Clock className='h-4 w-4' />
+                        <h3 className='text-xs'>Há 1 hora</h3>
+                      </div>
                     </div>
                   </div>
                   <div className='h-25 min-w-25 rounded-md overflow-hidden'>
-                    <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+                    <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                   </div>
                 </div>
-                <div className='flex flex-row group h-32 w-full items-center gap-5'>
-                  <h1 className='text-4xl font-bold text-[#fa67325d]'>03</h1>
-                  <div className='flex flex-col gap-2'>
-                    <h2 className='font-medium'>Pesquisa revela hábitos de bla bla bla bla...</h2>
-                    <div className='flex flex-row gap-2 text-gray-600'>
-                      <Clock className='h-4 w-4' />
-                      <h3 className='text-xs'>Há 1 hora</h3>
+                <div className='flex flex-row group h-32 w-full items-center justify-around gap-5 group'>
+                  <div className='flex flex-row gap-5 items-center'>
+                    <h1 className='text-4xl font-bold text-[#fa67325d] group-hover:text-[#fa6732]'>01</h1>
+                    <div className='flex flex-col gap-2'>
+                      <h2 className='font-medium group-hover:text-[#fa6732]'>Pesquisa revela hábitos de bla bla bla bla...</h2>
+                      <div className='flex flex-row gap-2 text-gray-600'>
+                        <Clock className='h-4 w-4' />
+                        <h3 className='text-xs'>Há 1 hora</h3>
+                      </div>
                     </div>
                   </div>
                   <div className='h-25 min-w-25 rounded-md overflow-hidden'>
-                    <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+                    <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                   </div>
                 </div>
-                <div className='flex flex-row group h-32 w-full items-center gap-5'>
-                  <h1 className='text-4xl font-bold text-[#fa67325d]'>04</h1>
-                  <div className='flex flex-col gap-2'>
-                    <h2 className='font-medium'>Pesquisa revela hábitos de bla bla bla bla...</h2>
-                    <div className='flex flex-row gap-2 text-gray-600'>
-                      <Clock className='h-4 w-4' />
-                      <h3 className='text-xs'>Há 1 hora</h3>
+                <div className='flex flex-row group h-32 w-full items-center justify-around gap-5 group'>
+                  <div className='flex flex-row gap-5 items-center'>
+                    <h1 className='text-4xl font-bold text-[#fa67325d] group-hover:text-[#fa6732]'>01</h1>
+                    <div className='flex flex-col gap-2'>
+                      <h2 className='font-medium group-hover:text-[#fa6732]'>Pesquisa revela hábitos de bla bla bla bla...</h2>
+                      <div className='flex flex-row gap-2 text-gray-600'>
+                        <Clock className='h-4 w-4' />
+                        <h3 className='text-xs'>Há 1 hora</h3>
+                      </div>
                     </div>
                   </div>
                   <div className='h-25 min-w-25 rounded-md overflow-hidden'>
-                    <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+                    <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                   </div>
                 </div>
-                <div className='flex flex-row group h-32 w-full items-center gap-5'>
-                  <h1 className='text-4xl font-bold text-[#fa67325d]'>05</h1>
-                  <div className='flex flex-col gap-2'>
-                    <h2 className='font-medium'>Pesquisa revela hábitos de bla bla bla bla...</h2>
-                    <div className='flex flex-row gap-2 text-gray-600'>
-                      <Clock className='h-4 w-4' />
-                      <h3 className='text-xs'>Há 1 hora</h3>
+                <div className='flex flex-row group h-32 w-full items-center justify-around gap-5 group'>
+                  <div className='flex flex-row gap-5 items-center'>
+                    <h1 className='text-4xl font-bold text-[#fa67325d] group-hover:text-[#fa6732]'>01</h1>
+                    <div className='flex flex-col gap-2'>
+                      <h2 className='font-medium group-hover:text-[#fa6732]'>Pesquisa revela hábitos de bla bla bla bla...</h2>
+                      <div className='flex flex-row gap-2 text-gray-600'>
+                        <Clock className='h-4 w-4' />
+                        <h3 className='text-xs'>Há 1 hora</h3>
+                      </div>
                     </div>
                   </div>
                   <div className='h-25 min-w-25 rounded-md overflow-hidden'>
-                    <img className='h-full w-full object-cover' src={tajMahal} alt="" />
+                    <img className='h-full w-full object-cover group-hover:scale-110 transition-transform duration-500' src={tajMahal} alt="" />
                   </div>
                 </div>
               </div>
