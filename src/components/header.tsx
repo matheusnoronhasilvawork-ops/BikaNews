@@ -3,7 +3,7 @@ import { Menu, Search, User } from "lucide-react";
 
 export default function Header() {
     return (
-        <header className="w-full h-16 flex items-center">
+        <header className="w-full h-16 flex items-center sticky top-0 bg-white z-10">
             <div className="flex-1 h-full flex gap-7 items-center pl-4">
                 <Menu className="min-w-8 min-h-8 cursor-pointer xl:hidden" />
                 <img src={bikanews} alt="logo" className="w-32 h-24" />
