@@ -3,30 +3,14 @@ import bikanews from './assets/bikanews.png'
 import { Search, Menu, User, Clock, TrendingUp, Newspaper } from 'lucide-react'
 import { FaFacebook, FaInstagram, FaTwitter, FaArrowRight } from 'react-icons/fa'
 import tajMahal from './assets/tajMahal.png'
+import Header  from './components/header'
 
 //w-[clamp(500px,80vw,1400px)]
 //#fa6832
 function App() {
   return (
     <div className="min-h-screen flex flex-col gap-4">
-
-      <header className="w-full h-16 flex items-center">
-        <div className="flex-1 h-full flex gap-7 items-center pl-4">
-          <Menu className="min-w-8 min-h-8 cursor-pointer xl:hidden" />
-          <img src={bikanews} alt="logo" className="w-32 h-24" />
-          <nav className="font-bold text-lg cursor-pointer max-xl:hidden">Inicio</nav>
-          <nav className="font-bold text-lg cursor-pointer max-xl:hidden">Política</nav>
-          <nav className="font-bold text-lg cursor-pointer max-xl:hidden">Economia</nav>
-          <nav className="font-bold text-lg cursor-pointer max-xl:hidden">Esporte</nav>
-          <nav className="font-bold text-lg cursor-pointer max-xl:hidden">Tecnologia</nav>
-        </div>
-
-        <div className="w-[25%] h-full flex justify-center items-center gap-12">
-          <Search className="min-w-8 min-h-8 cursor-pointer" />
-          <User className="min-w-8 min-h-8 cursor-pointer" />
-        </div>
-      </header>
-
+      <Header />
       <main className='flex-1 flex flex-col items-center overflow-y-auto overflow-x-hidden gap-6 pb-44'>
         <div className='h-[clamp(200px,45vw,750px)] w-[clamp(500px,95vw,1400px)] overflow-hidden relative group rounded-2xl'>
           <img src={tajMahal} className='object-cover inset-0 h-full w-full group-hover:scale-110 transition-transform duration-500' />
