@@ -1,6 +1,6 @@
 import Footer from "./components/footer";
 import Header from "./components/header";
-import { Clock, User, Bookmark, Share2 } from "lucide-react";
+import { Clock, User, Bookmark, Share2, Newspaper } from "lucide-react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import TajMahal from "./assets/tajMahal.png";
 
@@ -8,8 +8,8 @@ export function NewScreen() {
     return (
         <div className="min-h-screen flex flex-col gap-4">
             <Header />
-            <main className="flex-1 flex flex-row items-center overflow-x-hidden gap-6 pb-44 px-35 pt-5">
-                <div className="flex flex-col flex-3 justify-center gap-4 shadow-lg rounded-2xl bg-white p-10">
+            <main className="flex-1 flex flex-row overflow-x-hidden gap-6 pb-44 px-35 pt-5">
+                <div className="flex flex-col flex-3 justify-center gap-4 shadow-[0_0_6px_rgba(0,0,0,0.1)] rounded-2xl bg-white p-10">
                     <h2 className="bg-[#fa6732] py-1.5 px-3 text-white rounded-2xl tracking-wider w-fit">ECONOMIA</h2>
                     <h1 className="text-6xl font-medium mt-5">Governo anuncia novo pacote de medidas econômicas para estimular crescimento</h1>
                     <div className="flex flex-row items-center gap-10">
@@ -95,7 +95,95 @@ export function NewScreen() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col flex-1"></div>
+                <div className="flex flex-col flex-1 h-auto gap-10">
+                    <div className="w-full h-60 items-center justify-center flex bg-gray-300 rounded-2xl">
+                        <span>Publicidade</span>
+                    </div>
+                    <div className="flex flex-col w-full h-full shadow-[0_0_6px_rgba(0,0,0,0.1)] bg-white rounded-2xl px-5 py-5 gap-2">
+                        <h3 className="text-xl font-medium">Leia também</h3>
+                        <div className="w-full h-0.5 bg-[#fa6732]" />
+                        <div className="flex flex-col gap-8">
+                            <div className="flex flex-row h-20 w-full gap-4 group cursor-pointer">
+                                <div className="h-full min-w-20 rounded-lg overflow-hidden">
+                                    <img className="h-full w-full object-cover group-hover:scale-110 transition duration-500" src={TajMahal} alt="" />
+                                </div>
+                                <div className="flex flex-col justify-between">
+                                    <h4 className="bg-purple-200 text-purple-600 py-0.5 px-2 text-[0.625rem] w-fit">MERCADO</h4>
+                                    <span className="text-xs group-hover:text-[#fa6732] font-medium text-gray-800">Bolsa de valores atinge novo recorde histórico com pacote econômico</span>
+                                    <div className="flex flex-row items-center">
+                                        <Clock className="w-3 h-3 text-gray-400" />
+                                        <span className="text-gray-400 text-[0.625rem] ml-1">20 de junho de 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-row h-20 w-full gap-4 group cursor-pointer">
+                                <div className="h-full min-w-20 rounded-lg overflow-hidden">
+                                    <img className="h-full w-full object-cover group-hover:scale-110 transition duration-500" src={TajMahal} alt="" />
+                                </div>
+                                <div className="flex flex-col justify-between">
+                                    <h4 className="bg-purple-200 text-purple-600 py-0.5 px-2 text-[0.625rem] w-fit">MERCADO</h4>
+                                    <span className="text-xs group-hover:text-[#fa6732] font-medium text-gray-800">Bolsa de valores atinge novo recorde histórico com pacote econômico</span>
+                                    <div className="flex flex-row items-center">
+                                        <Clock className="w-3 h-3 text-gray-400" />
+                                        <span className="text-gray-400 text-[0.625rem] ml-1">20 de junho de 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-row h-20 w-full gap-4 group cursor-pointer">
+                                <div className="h-full min-w-20 rounded-lg overflow-hidden">
+                                    <img className="h-full w-full object-cover group-hover:scale-110 transition duration-500" src={TajMahal} alt="" />
+                                </div>
+                                <div className="flex flex-col justify-between">
+                                    <h4 className="bg-purple-200 text-purple-600 py-0.5 px-2 text-[0.625rem] w-fit">MERCADO</h4>
+                                    <span className="text-xs group-hover:text-[#fa6732] font-medium text-gray-800">Bolsa de valores atinge novo recorde histórico com pacote econômico</span>
+                                    <div className="flex flex-row items-center">
+                                        <Clock className="w-3 h-3 text-gray-400" />
+                                        <span className="text-gray-400 text-[0.625rem] ml-1">20 de junho de 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-row h-20 w-full gap-4 group cursor-pointer">
+                                <div className="h-full min-w-20 rounded-lg overflow-hidden">
+                                    <img className="h-full w-full object-cover group-hover:scale-110 transition duration-500" src={TajMahal} alt="" />
+                                </div>
+                                <div className="flex flex-col justify-between">
+                                    <h4 className="bg-purple-200 text-purple-600 py-0.5 px-2 text-[0.625rem] w-fit">MERCADO</h4>
+                                    <span className="text-xs group-hover:text-[#fa6732] font-medium text-gray-800">Bolsa de valores atinge novo recorde histórico com pacote econômico</span>
+                                    <div className="flex flex-row items-center">
+                                        <Clock className="w-3 h-3 text-gray-400" />
+                                        <span className="text-gray-400 text-[0.625rem] ml-1">20 de junho de 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex flex-row h-20 w-full gap-4 group cursor-pointer">
+                                <div className="h-full min-w-20 rounded-lg overflow-hidden">
+                                    <img className="h-full w-full object-cover group-hover:scale-110 transition duration-500" src={TajMahal} alt="" />
+                                </div>
+                                <div className="flex flex-col justify-between">
+                                    <h4 className="bg-purple-200 text-purple-600 py-0.5 px-2 text-[0.625rem] w-fit">MERCADO</h4>
+                                    <span className="text-xs group-hover:text-[#fa6732] font-medium text-gray-800">Bolsa de valores atinge novo recorde histórico com pacote econômico</span>
+                                    <div className="flex flex-row items-center">
+                                        <Clock className="w-3 h-3 text-gray-400" />
+                                        <span className="text-gray-400 text-[0.625rem] ml-1">20 de junho de 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full h-60 bg-[#fa6732] rounded-2xl py-7 px-12">
+                        <div className='flex flex-col gap-4 w-full items-center'>
+                            <div className='flex flex-row items-center self-start gap-4 w-fit'>
+                                <Newspaper className='text-white h-6 w-6' />
+                                <h1 className='text-white font-medium text-xl'>Receba nossas notícias</h1>
+                            </div>
+                            <h2 className='text-white text-xs'>Inscreva-se para receber as principais notícias do dia diretamente no seu e-mail.</h2>
+                        </div>
+                        <div className='flex flex-col w-full gap-4'>
+                            <input type="email" name="" placeholder='seuemail@gmail.com' id="" className='outline-none w-full h-12 bg-white p-4 rounded-md' />
+                            <button className='w-full h-12 bg-white text-[#fa6732] rounded-md font-medium cursor-pointer text-lg'>Inscrever-se</button>
+                        </div>
+                    </div>
+                </div>
             </main>
             <Footer />
         </div>
