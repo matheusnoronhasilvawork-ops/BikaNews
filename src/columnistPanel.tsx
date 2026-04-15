@@ -8,17 +8,17 @@ export default function ColumnistPanel() {
         <div className="min-h-screen flex flex-col items-center">
             <Header />
             <main className="flex flex-1 w-full flex-col bg-gray-100 px-10 py-5 gap-4">
-                <div className="flex flex-row w-full justify-between items-center">
-                    <div className="flex flex-col">
+                <div className="flex flex-row max-sm:flex-col w-full justify-between items-center max-sm:gap-4">
+                    <div className="flex flex-col items-start justify-start max-sm:w-full">
                         <h1 className="text-3xl font-medium">Meu painel de colunista</h1>
                         <h2 className="text-sm">Acompanhe suas notícias e submissões</h2>
                     </div>
-                    <button className="flex flex-row bg-[#fa6732] text-white px-4 py-2 items-center rounded-lg gap-2">
+                    <button className="max-sm:w-full justify-center flex flex-row bg-[#fa6732] text-white px-4 py-2 items-center rounded-lg gap-2">
                         <Pencil size={18} />
                         <span>Nova notícia</span>
                     </button>
                 </div>
-                <div className="flex flex-row w-full gap-6">
+                <div className="flex flex-row max-lg:grid max-lg:grid-cols-3 max-lg:grid-rows-2 max-sm:grid-cols-2 max-sm:grid-rows-3 w-full gap-6">
                     <div className=" p-5 flex flex-1 flex-col border-gray-300 border-2 bg-white rounded-2xl shadow-[0_2px_2px_rgba(0,0,0,0.1)]">
                         <FileText size={25} className="text-gray-500" />
                         <h2 className="text-2xl font-medium">6</h2>
@@ -39,18 +39,18 @@ export default function ColumnistPanel() {
                         <h2 className="text-2xl font-medium text-red-500">1</h2>
                         <span className="text-[0.8rem]">Rejeitadas</span>
                     </div>
-                    <div className=" p-5 flex flex-1 flex-col border-blue-300 border-2 bg-white rounded-2xl shadow-[0_2px_2px_rgba(0,0,0,0.1)]">
+                    <div className="max-sm:col-span-2 p-5 flex flex-1 flex-col border-blue-300 border-2 bg-white rounded-2xl shadow-[0_2px_2px_rgba(0,0,0,0.1)]">
                         <TrendingUp size={25} className="text-blue-500" />
                         <h2 className="text-2xl font-medium text-blue-500">4.775</h2>
                         <span className="text-[0.8rem]">Visualizações</span>
                     </div>
                 </div>
-                <div className="flex flex-row bg-white shadow-[0_2px_2px_rgba(0,0,0,0.1)] rounded-lg p-4 gap-4">
+                <div className="flex flex-row bg-white shadow-[0_2px_2px_rgba(0,0,0,0.1)] rounded-lg p-4 gap-4 max-sm:grid max-sm:grid-cols-4 max-sm:grid-rows-2">
                     <button className="flex flex-row bg-[#fa6732] text-white px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Todas (6)</button>
-                    <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Publicadas (3)</button>
-                    <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Em revisão (2)</button>
-                    <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Rejeitadas (1)</button>
-                    <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Editadas</button>
+                    <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Pub... (3)</button>
+                    <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Revisão (2)</button>
+                    <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Rej... (1)</button>
+                    <button className="max-sm:col-span-4 items-center justify-center flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Editadas</button>
                 </div>
                 <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4">
                     <div className="h-full flex flex-1 rounded-lg overflow-hidden">
