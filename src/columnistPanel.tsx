@@ -52,7 +52,7 @@ export default function ColumnistPanel() {
                     <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Rej... (1)</button>
                     <button className="max-sm:col-span-4 items-center justify-center flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Editadas</button>
                 </div>
-                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4">
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
                     <div className="h-full flex flex-1 rounded-lg overflow-hidden">
                         <img className="h-full w-full object-cover" src={TajMahal} alt="" />
                     </div>
@@ -83,7 +83,7 @@ export default function ColumnistPanel() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4">
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
                     <div className="h-full flex flex-1 rounded-lg overflow-hidden">
                         <img className="h-full w-full object-cover" src={TajMahal} alt="" />
                     </div>
@@ -110,7 +110,7 @@ export default function ColumnistPanel() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4">
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
                     <div className="h-full flex flex-1 rounded-lg overflow-hidden">
                         <img className="h-full w-full object-cover" src={TajMahal} alt="" />
                     </div>
@@ -144,7 +144,7 @@ export default function ColumnistPanel() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4">
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
                     <div className="h-full flex flex-1 rounded-lg overflow-hidden">
                         <img className="h-full w-full object-cover" src={TajMahal} alt="" />
                     </div>
