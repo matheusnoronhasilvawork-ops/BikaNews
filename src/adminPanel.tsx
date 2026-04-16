@@ -30,8 +30,8 @@ export default function AdminPanel() {
                         <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Rejeitadas</button>
                     </div>
                 </div>
-                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
-                    <div className="h-full flex flex-1 rounded-lg overflow-hidden">
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-md:flex-col">
+                    <div className="h-full flex min-w-85 max-w-85 max-md:max-w-0 max-md:min-w-full rounded-lg overflow-hidden">
                         <img className="h-full w-full object-cover" src={TajMahal} alt="" />
                     </div>
                     <div className="flex flex-col flex-3 justify-evenly">
@@ -42,7 +42,7 @@ export default function AdminPanel() {
                             <span className="text-sm py-0.5 px-2 bg-gray-100 text-gray-700 rounded-lg">Tecnologia</span>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <h3 className="text-lg font-bold text-gray-800">A evolução da inteligência artificial no Brasil</h3>
+                            <h3 className="text-lg font-bold text-gray-800 line-clamp-2">Novas tecnologias transformam o mercado brasileiro</h3>
                             <div className="flex flex-row gap-2">
                                 <div className="flex flex-row items-center">
                                     <User className="w-3 h-3 text-gray-400" />
@@ -54,31 +54,29 @@ export default function AdminPanel() {
                                 </div>
                             </div>
                             <div className="h-0.5 w-full bg-gray-100"></div>
-                            <div className="flex flex-row justify-between">
-                                <div className="flex flex-row gap-2 items-center">
-                                    <button className="flex flex-row text-black items-center border-2 border-gray-200 w-fit py-1 px-3 rounded-lg">
-                                        <SquarePen size={18} className="" />
-                                        <span className=" text-sm ml-1">Editar • Visualizar</span>
-                                    </button>
-                                    <button className="flex flex-row text-white items-center border-2 bg-green-500 w-fit py-1 px-3 rounded-lg">
-                                        <CheckCircle size={18} className="" />
-                                        <span className=" text-sm ml-1">Aprovar</span>
-                                    </button>
-                                    <button className="flex flex-row text-white items-center border-2 bg-red-500 w-fit py-1 px-3 rounded-lg">
-                                        <CircleX size={18} className="" />
-                                        <span className=" text-sm ml-1">Rejetiar</span>
-                                    </button>
-                                </div>
-                                <button className="flex flex-row text-red-700 items-center border-2 border-red-200 w-fit py-1 px-3 rounded-lg">
-                                    <Trash2 size={18} className="" />
-                                    <span className=" text-sm ml-1">Excluir</span>
+                            <div className="max-lg:gap-x-8 flex flex-row gap-2 items-center max-lg:grid max-lg:grid-cols-2 max-lg:gap-2 max-lg:justify-items-start">
+                                <button className="max-lg:w-full justify-center flex items-center border-2 border-gray-200 py-1 px-3 rounded-lg max-lg:order-1">
+                                    <SquarePen size={18} />
+                                    <span className="text-sm ml-1 line-clamp-1">Editar • Visualizar</span>
+                                </button>
+                                <button className="max-lg:w-full justify-center flex items-center bg-green-500 text-white py-1 px-3 rounded-lg max-lg:order-3">
+                                    <CheckCircle size={18} />
+                                    <span className="text-sm ml-1">Aprovar</span>
+                                </button>
+                                <button className="max-lg:w-full justify-center flex items-center bg-red-500 text-white py-1 px-3 rounded-lg max-lg:order-4">
+                                    <CircleX size={18} />
+                                    <span className="text-sm ml-1">Rejeitar</span>
+                                </button>
+                                <button className="max-lg:w-full justify-center ml-auto max-lg:ml-0 flex items-center border-2 border-red-200 text-red-700 py-1 px-3 rounded-lg max-lg:order-2">
+                                    <Trash2 size={18} />
+                                    <span className="text-sm ml-1">Excluir</span>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
-                    <div className="h-full flex flex-1 rounded-lg overflow-hidden">
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-md:flex-col">
+                    <div className="h-full flex min-w-85 max-w-85 max-md:max-w-0 max-md:min-w-full rounded-lg overflow-hidden">
                         <img className="h-full w-full object-cover" src={TajMahal} alt="" />
                     </div>
                     <div className="flex flex-col flex-3 justify-evenly">
@@ -89,7 +87,7 @@ export default function AdminPanel() {
                             <span className="text-sm py-0.5 px-2 bg-gray-100 text-gray-700 rounded-lg">Tecnologia</span>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <h3 className="text-lg font-bold text-gray-800">A evolução da inteligência artificial no Brasil</h3>
+                            <h3 className="text-lg font-bold text-gray-800 line-clamp-2">Novas tecnologias transformam o mercado brasileiro</h3>
                             <div className="flex flex-row gap-2">
                                 <div className="flex flex-row items-center">
                                     <User className="w-3 h-3 text-gray-400" />
@@ -101,31 +99,29 @@ export default function AdminPanel() {
                                 </div>
                             </div>
                             <div className="h-0.5 w-full bg-gray-100"></div>
-                            <div className="flex flex-row justify-between">
-                                <div className="flex flex-row gap-2 items-center">
-                                    <button className="flex flex-row text-black items-center border-2 border-gray-200 w-fit py-1 px-3 rounded-lg">
-                                        <SquarePen size={18} className="" />
-                                        <span className=" text-sm ml-1">Editar • Visualizar</span>
-                                    </button>
-                                    <button className="flex flex-row text-white items-center border-2 bg-green-500 w-fit py-1 px-3 rounded-lg">
-                                        <CheckCircle size={18} className="" />
-                                        <span className=" text-sm ml-1">Aprovar</span>
-                                    </button>
-                                    <button className="flex flex-row text-white items-center border-2 bg-red-500 w-fit py-1 px-3 rounded-lg">
-                                        <CircleX size={18} className="" />
-                                        <span className=" text-sm ml-1">Rejetiar</span>
-                                    </button>
-                                </div>
-                                <button className="flex flex-row text-red-700 items-center border-2 border-red-200 w-fit py-1 px-3 rounded-lg">
-                                    <Trash2 size={18} className="" />
-                                    <span className=" text-sm ml-1">Excluir</span>
+                            <div className="max-lg:gap-x-8 flex flex-row gap-2 items-center max-lg:grid max-lg:grid-cols-2 max-lg:gap-2 max-lg:justify-items-start">
+                                <button className="max-lg:w-full justify-center flex items-center border-2 border-gray-200 py-1 px-3 rounded-lg max-lg:order-1">
+                                    <SquarePen size={18} />
+                                    <span className="text-sm ml-1 line-clamp-1">Editar • Visualizar</span>
+                                </button>
+                                <button className="max-lg:w-full justify-center flex items-center bg-green-500 text-white py-1 px-3 rounded-lg max-lg:order-3">
+                                    <CheckCircle size={18} />
+                                    <span className="text-sm ml-1">Aprovar</span>
+                                </button>
+                                <button className="max-lg:w-full justify-center flex items-center bg-red-500 text-white py-1 px-3 rounded-lg max-lg:order-4">
+                                    <CircleX size={18} />
+                                    <span className="text-sm ml-1">Rejeitar</span>
+                                </button>
+                                <button className="max-lg:w-full justify-center ml-auto max-lg:ml-0 flex items-center border-2 border-red-200 text-red-700 py-1 px-3 rounded-lg max-lg:order-2">
+                                    <Trash2 size={18} />
+                                    <span className="text-sm ml-1">Excluir</span>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
-                    <div className="h-full flex flex-1 rounded-lg overflow-hidden">
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-md:flex-col">
+                    <div className="h-full min-w-85 max-w-85 max-md:max-w-0 max-md:min-w-full flex flex-1 rounded-lg overflow-hidden">
                         <img className="h-full w-full object-cover" src={TajMahal} alt="" />
                     </div>
                     <div className="flex flex-col flex-3 justify-evenly">
@@ -136,7 +132,7 @@ export default function AdminPanel() {
                             <span className="text-sm py-0.5 px-2 bg-gray-100 text-gray-700 rounded-lg">Esportes</span>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <h3 className="text-lg font-bold text-gray-800">A evolução da inteligência artificial no Brasil</h3>
+                            <h3 className="text-lg font-bold text-gray-800 line-clamp-2">A evolução da inteligência artificial no Brasil</h3>
                             <div className="flex flex-row gap-2">
                                 <div className="flex flex-row items-center">
                                     <User className="w-3 h-3 text-gray-400" />
@@ -152,7 +148,7 @@ export default function AdminPanel() {
                                 <div className="flex flex-row gap-2 items-center">
                                     <button className="flex flex-row text-black items-center border-2 border-gray-200 w-fit py-1 px-3 rounded-lg">
                                         <SquarePen size={18} className="" />
-                                        <span className=" text-sm ml-1">Editar • Visualizar</span>
+                                        <span className=" text-sm ml-1 line-clamp-1">Editar • Visualizar</span>
                                     </button>
                                 </div>
                                 <button className="flex flex-row text-red-700 items-center border-2 border-red-200 w-fit py-1 px-3 rounded-lg">
@@ -163,8 +159,8 @@ export default function AdminPanel() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
-                    <div className="h-full flex flex-1 rounded-lg overflow-hidden">
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-md:flex-col">
+                    <div className="h-full flex min-w-85 max-w-85 max-md:max-w-0 max-md:min-w-full rounded-lg overflow-hidden">
                         <img className="h-full w-full object-cover" src={TajMahal} alt="" />
                     </div>
                     <div className="flex flex-col flex-3 justify-evenly">
@@ -175,7 +171,7 @@ export default function AdminPanel() {
                             <span className="text-sm py-0.5 px-2 bg-gray-100 text-gray-700 rounded-lg">Tecnologia</span>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <h3 className="text-lg font-bold text-gray-800">A evolução da inteligência artificial no Brasil</h3>
+                            <h3 className="text-lg font-bold text-gray-800 line-clamp-2">Novas tecnologias transformam o mercado brasileiro</h3>
                             <div className="flex flex-row gap-2">
                                 <div className="flex flex-row items-center">
                                     <User className="w-3 h-3 text-gray-400" />
@@ -191,7 +187,7 @@ export default function AdminPanel() {
                                 <div className="flex flex-row gap-2 items-center">
                                     <button className="flex flex-row text-black items-center border-2 border-gray-200 w-fit py-1 px-3 rounded-lg">
                                         <SquarePen size={18} className="" />
-                                        <span className=" text-sm ml-1">Editar • Visualizar</span>
+                                        <span className=" text-sm ml-1 line-clamp-1">Editar • Visualizar</span>
                                     </button>
                                 </div>
                                 <button className="flex flex-row text-red-700 items-center border-2 border-red-200 w-fit py-1 px-3 rounded-lg">
