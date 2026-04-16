@@ -6,9 +6,10 @@ import ColumnistPanel from './columnistPanel.tsx'
 import AdminPanel from './adminPanel.tsx'
 import { NewScreen } from './newScreen.tsx'
 import Login from './login.tsx'
+import SignUp from './signUp.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Login />
+    <SignUp />
   </StrictMode>,
 )
