@@ -23,11 +23,11 @@ export default function AdminPanel() {
                         <Search size={25} className="text-gray-400" />
                         <input className="outline-none" placeholder="Buscar" />
                     </div>
-                    <div className="flex flex-row gap-4 max-sm:grid max-sm:grid-cols-4 max-sm:grid-rows-2">
-                        <button className="flex flex-row bg-[#fa6732] text-white px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Todas</button>
-                        <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Pendentes</button>
-                        <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Publicadas</button>
-                        <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Rejeitadas</button>
+                    <div className="flex flex-row gap-4 max-sm:grid max-sm:grid-cols-3 max-sm:grid-rows-2">
+                        <button className="max-sm:col-span-3 justify-center flex flex-row bg-[#fa6732] text-white px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Todas</button>
+                        <button className="flex flex-row justify-center bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Pendentes</button>
+                        <button className="flex flex-row justify-center bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Publicadas</button>
+                        <button className="flex flex-row justify-center bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Rejeitadas</button>
                     </div>
                 </div>
                 <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-md:flex-col">
