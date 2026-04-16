@@ -1,6 +1,7 @@
 import Footer from "./components/footer";
 import Header from "./components/header";
-import { TriangleAlert, Search } from "lucide-react";
+import { TriangleAlert, Search, CheckCircle, Clock, Eye, User, CircleX, SquarePen, Trash2 } from "lucide-react";
+import TajMahal from "./assets/tajMahal.png";
 
 export default function AdminPanel() {
     return (
@@ -27,6 +28,178 @@ export default function AdminPanel() {
                         <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Pendentes</button>
                         <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Publicadas</button>
                         <button className="flex flex-row bg-gray-100 text-gray-700 px-4 py-1.5 text-sm font-medium rounded-lg cursor-pointer">Rejeitadas</button>
+                    </div>
+                </div>
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
+                    <div className="h-full flex flex-1 rounded-lg overflow-hidden">
+                        <img className="h-full w-full object-cover" src={TajMahal} alt="" />
+                    </div>
+                    <div className="flex flex-col flex-3 justify-evenly">
+                        <div className="flex flex-row gap-2 items-center">
+                            <CheckCircle size={18} className="text-yellow-500" />
+                            <span className="py-0.5 px-2 bg-yellow-100 text-yellow-700 rounded-lg text-sm">Pendente</span>
+                            <span className="text-gray-700">•</span>
+                            <span className="text-sm py-0.5 px-2 bg-gray-100 text-gray-700 rounded-lg">Tecnologia</span>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <h3 className="text-lg font-bold text-gray-800">A evolução da inteligência artificial no Brasil</h3>
+                            <div className="flex flex-row gap-2">
+                                <div className="flex flex-row items-center">
+                                    <User className="w-3 h-3 text-gray-400" />
+                                    <span className="text-gray-400 text-[0.7rem] ml-1">Maria Santos</span>
+                                </div>
+                                <div className="flex flex-row items-center">
+                                    <Clock className="w-3 h-3 text-gray-400" />
+                                    <span className="text-gray-400 text-[0.7rem] ml-1">5 de Abril de 2026</span>
+                                </div>
+                            </div>
+                            <div className="h-0.5 w-full bg-gray-100"></div>
+                            <div className="flex flex-row justify-between">
+                                <div className="flex flex-row gap-2 items-center">
+                                    <button className="flex flex-row text-black items-center border-2 border-gray-200 w-fit py-1 px-3 rounded-lg">
+                                        <SquarePen size={18} className="" />
+                                        <span className=" text-sm ml-1">Editar • Visualizar</span>
+                                    </button>
+                                    <button className="flex flex-row text-white items-center border-2 bg-green-500 w-fit py-1 px-3 rounded-lg">
+                                        <CheckCircle size={18} className="" />
+                                        <span className=" text-sm ml-1">Aprovar</span>
+                                    </button>
+                                    <button className="flex flex-row text-white items-center border-2 bg-red-500 w-fit py-1 px-3 rounded-lg">
+                                        <CircleX size={18} className="" />
+                                        <span className=" text-sm ml-1">Rejetiar</span>
+                                    </button>
+                                </div>
+                                <button className="flex flex-row text-red-700 items-center border-2 border-red-200 w-fit py-1 px-3 rounded-lg">
+                                    <Trash2 size={18} className="" />
+                                    <span className=" text-sm ml-1">Excluir</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
+                    <div className="h-full flex flex-1 rounded-lg overflow-hidden">
+                        <img className="h-full w-full object-cover" src={TajMahal} alt="" />
+                    </div>
+                    <div className="flex flex-col flex-3 justify-evenly">
+                        <div className="flex flex-row gap-2 items-center">
+                            <CheckCircle size={18} className="text-yellow-500" />
+                            <span className="py-0.5 px-2 bg-yellow-100 text-yellow-700 rounded-lg text-sm">Pendente</span>
+                            <span className="text-gray-700">•</span>
+                            <span className="text-sm py-0.5 px-2 bg-gray-100 text-gray-700 rounded-lg">Tecnologia</span>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <h3 className="text-lg font-bold text-gray-800">A evolução da inteligência artificial no Brasil</h3>
+                            <div className="flex flex-row gap-2">
+                                <div className="flex flex-row items-center">
+                                    <User className="w-3 h-3 text-gray-400" />
+                                    <span className="text-gray-400 text-[0.7rem] ml-1">Maria Santos</span>
+                                </div>
+                                <div className="flex flex-row items-center">
+                                    <Clock className="w-3 h-3 text-gray-400" />
+                                    <span className="text-gray-400 text-[0.7rem] ml-1">5 de Abril de 2026</span>
+                                </div>
+                            </div>
+                            <div className="h-0.5 w-full bg-gray-100"></div>
+                            <div className="flex flex-row justify-between">
+                                <div className="flex flex-row gap-2 items-center">
+                                    <button className="flex flex-row text-black items-center border-2 border-gray-200 w-fit py-1 px-3 rounded-lg">
+                                        <SquarePen size={18} className="" />
+                                        <span className=" text-sm ml-1">Editar • Visualizar</span>
+                                    </button>
+                                    <button className="flex flex-row text-white items-center border-2 bg-green-500 w-fit py-1 px-3 rounded-lg">
+                                        <CheckCircle size={18} className="" />
+                                        <span className=" text-sm ml-1">Aprovar</span>
+                                    </button>
+                                    <button className="flex flex-row text-white items-center border-2 bg-red-500 w-fit py-1 px-3 rounded-lg">
+                                        <CircleX size={18} className="" />
+                                        <span className=" text-sm ml-1">Rejetiar</span>
+                                    </button>
+                                </div>
+                                <button className="flex flex-row text-red-700 items-center border-2 border-red-200 w-fit py-1 px-3 rounded-lg">
+                                    <Trash2 size={18} className="" />
+                                    <span className=" text-sm ml-1">Excluir</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
+                    <div className="h-full flex flex-1 rounded-lg overflow-hidden">
+                        <img className="h-full w-full object-cover" src={TajMahal} alt="" />
+                    </div>
+                    <div className="flex flex-col flex-3 justify-evenly">
+                        <div className="flex flex-row gap-2 items-center">
+                            <CheckCircle size={18} className="text-green-500" />
+                            <span className="py-0.5 px-2 bg-green-100 text-green-700 rounded-lg text-sm">Publicada</span>
+                            <span className="text-gray-700">•</span>
+                            <span className="text-sm py-0.5 px-2 bg-gray-100 text-gray-700 rounded-lg">Esportes</span>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <h3 className="text-lg font-bold text-gray-800">A evolução da inteligência artificial no Brasil</h3>
+                            <div className="flex flex-row gap-2">
+                                <div className="flex flex-row items-center">
+                                    <User className="w-3 h-3 text-gray-400" />
+                                    <span className="text-gray-400 text-[0.7rem] ml-1">Maria Santos</span>
+                                </div>
+                                <div className="flex flex-row items-center">
+                                    <Clock className="w-3 h-3 text-gray-400" />
+                                    <span className="text-gray-400 text-[0.7rem] ml-1">5 de Abril de 2026</span>
+                                </div>
+                            </div>
+                            <div className="h-0.5 w-full bg-gray-100"></div>
+                            <div className="flex flex-row justify-between">
+                                <div className="flex flex-row gap-2 items-center">
+                                    <button className="flex flex-row text-black items-center border-2 border-gray-200 w-fit py-1 px-3 rounded-lg">
+                                        <SquarePen size={18} className="" />
+                                        <span className=" text-sm ml-1">Editar • Visualizar</span>
+                                    </button>
+                                </div>
+                                <button className="flex flex-row text-red-700 items-center border-2 border-red-200 w-fit py-1 px-3 rounded-lg">
+                                    <Trash2 size={18} className="" />
+                                    <span className=" text-sm ml-1">Excluir</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-row rounded-lg p-5 bg-white w-full gap-4 max-sm:flex-col">
+                    <div className="h-full flex flex-1 rounded-lg overflow-hidden">
+                        <img className="h-full w-full object-cover" src={TajMahal} alt="" />
+                    </div>
+                    <div className="flex flex-col flex-3 justify-evenly">
+                        <div className="flex flex-row gap-2 items-center">
+                            <CheckCircle size={18} className="text-red-500" />
+                            <span className="py-0.5 px-2 bg-red-100 text-red-700 rounded-lg text-sm">Rejeitada</span>
+                            <span className="text-gray-700">•</span>
+                            <span className="text-sm py-0.5 px-2 bg-gray-100 text-gray-700 rounded-lg">Tecnologia</span>
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <h3 className="text-lg font-bold text-gray-800">A evolução da inteligência artificial no Brasil</h3>
+                            <div className="flex flex-row gap-2">
+                                <div className="flex flex-row items-center">
+                                    <User className="w-3 h-3 text-gray-400" />
+                                    <span className="text-gray-400 text-[0.7rem] ml-1">Maria Santos</span>
+                                </div>
+                                <div className="flex flex-row items-center">
+                                    <Clock className="w-3 h-3 text-gray-400" />
+                                    <span className="text-gray-400 text-[0.7rem] ml-1">5 de Abril de 2026</span>
+                                </div>
+                            </div>
+                            <div className="h-0.5 w-full bg-gray-100"></div>
+                            <div className="flex flex-row justify-between">
+                                <div className="flex flex-row gap-2 items-center">
+                                    <button className="flex flex-row text-black items-center border-2 border-gray-200 w-fit py-1 px-3 rounded-lg">
+                                        <SquarePen size={18} className="" />
+                                        <span className=" text-sm ml-1">Editar • Visualizar</span>
+                                    </button>
+                                </div>
+                                <button className="flex flex-row text-red-700 items-center border-2 border-red-200 w-fit py-1 px-3 rounded-lg">
+                                    <Trash2 size={18} className="" />
+                                    <span className=" text-sm ml-1">Excluir</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
