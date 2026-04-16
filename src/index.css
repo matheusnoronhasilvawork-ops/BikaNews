@@ -9,6 +9,13 @@
   }
 }
 
+@layer base {
+  input[type="password"]::-ms-reveal,
+  input[type="password"]::-ms-clear {
+    display: none;
+  }
+}
+
 .weak-shadow {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px;
 }
