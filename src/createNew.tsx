@@ -1,12 +1,12 @@
 import Footer from "./components/footer";
 import Header from "./components/header";
-import { ArrowLeft, Save, Info } from "lucide-react";
+import { ArrowLeft, Save, Info, Pilcrow, Heading2, Image, FileText } from "lucide-react";
 
 export default function CreateNew() {
     return (
-        <div className="h-screen flex flex-col items-center justify-center">
+        <div className="h-screen flex flex-col items-center">
             <Header />
-            <main className="w-full flex flex-col flex-1 h-full bg-gray-50 items-center justify-center">
+            <main className="w-full flex flex-col flex-1 bg-gray-50 items-center justify-center">
                 <div className="flex flex-col w-200 h-full py-5 gap-5">
                     <div className="text-black gap-2 flex flex-row items-center cursor-pointer hover:text-[#fa6732] ">
                         <ArrowLeft size={20} className="" />
@@ -30,7 +30,7 @@ export default function CreateNew() {
                             </div>
                             <p className="ml-6.5 text-sm text-blue-700">Sua notícia será revisada por um administrador antes da publicação. Você será notificado sobre qualquer alteração ou status da sua submissão.</p>
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col gap-2">
                             <div className="flex flex-col gap-2">
                                 <span>Título da Notícia</span>
                                 <div className="flex flex-row border border-gray-300 rounded-lg p-3 gap-3 items-center">
@@ -51,6 +51,36 @@ export default function CreateNew() {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className="flex flex-col w-full h-full bg-white rounded-2xl px-6 py-5 gap-4 shadow-md">
+                        <div className="flex flex-row w-full justify-between items-center">
+                            <h2 className="text-2xl font-bold">Conteúdo</h2>
+                            <div className="flex flex-row gap-2">
+                                <div className="flex flex-row border gap-2 border-gray-300 rounded-lg px-3 py-1.5 items-center cursor-pointer hover:bg-gray-100 transition duration-300">
+                                    <Pilcrow size={18} />
+                                    <span>Parágrafo</span>
+                                </div>
+                                <div className="flex flex-row border gap-2 border-gray-300 rounded-lg px-3 py-1.5 items-center cursor-pointer hover:bg-gray-100 transition duration-300">
+                                    <Heading2 size={18} />
+                                    <span>Subtítulo</span>
+                                </div>
+                                <div className="flex flex-row border gap-2 border-gray-300 rounded-lg px-3 py-1.5 items-center cursor-pointer hover:bg-gray-100 transition duration-300">
+                                    <Image size={18} />
+                                    <span>Imagem</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="w-full h-50 flex flex-col text-gray-400 items-center justify-center gap-2">
+                            <FileText size={60} className="" />
+                            <h3 className="text-md">Adicione blocos de conteúdo usando os botões acima</h3>
+                        </div>
+                    </div>
+                    <div className="flex flex-row w-full justify-end items-center gap-4">
+                        <span className="px-3 py-1.5 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 transition duration-300">Cancelar</span>
+                        <div className="items-center flex flex-row bg-[#fa6732] gap-2 hover:bg-[#c64f24] transition duration-300 text-white py-1.5 px-3 rounded-lg cursor-pointer">
+                            <Save size={18} />
+                            <span>Submeter para revisão</span>
                         </div>
                     </div>
                 </div>
