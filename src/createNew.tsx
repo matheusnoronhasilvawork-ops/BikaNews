@@ -11,6 +11,7 @@ type content = {
 export default function CreateNew() {
 
     const [contents, setContents] = useState<content>([]);
+    const [categories, setCategories] = useState<string[]>(["Política", "Economia", "Esportes", "Entretenimento", "Tecnologia", "Saúde"]);
 
     return (
         <div className="h-screen flex flex-col items-center">
@@ -50,7 +51,13 @@ export default function CreateNew() {
                                 <div className="flex flex-col gap-2 flex-1">
                                     <span>Categoria</span>
                                     <div className="flex flex-row border border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                        <input className="outline-none w-full" type="text" placeholder="Digite a categoria da notícia..." />
+                                        <select className="outline-none w-full">
+                                            {categories.map((category, index) => (
+                                                <option key={index} value={category}>
+                                                    {category}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-2 flex-1">
