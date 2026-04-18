@@ -1,8 +1,17 @@
+import { useState } from "react";
 import Footer from "./components/footer";
 import Header from "./components/header";
-import { ArrowLeft, Save, Info, Pilcrow, Heading2, Image, FileText } from "lucide-react";
+import { ArrowLeft, Save, Info, Pilcrow, Heading2, Image, FileText, X } from "lucide-react";
+
+type content = {
+    type: "paragraph" | "subTitle" | "image";
+    text: string;
+}[];
 
 export default function CreateNew() {
+
+    const [contents, setContents] = useState<content>([]);
+
     return (
         <div className="h-screen flex flex-col items-center">
             <Header />
@@ -57,23 +66,58 @@ export default function CreateNew() {
                         <div className="flex flex-row w-full justify-between items-center">
                             <h2 className="text-2xl font-bold">Conteúdo</h2>
                             <div className="flex flex-row gap-2">
-                                <div className="flex flex-row border gap-2 border-gray-300 rounded-lg px-3 py-1.5 items-center cursor-pointer hover:bg-gray-100 transition duration-300">
+                                <button onClick={() => setContents([...contents, { type: 'paragraph', text: '' }])} className="flex flex-row border gap-2 border-gray-300 rounded-lg px-3 py-1.5 items-center cursor-pointer hover:bg-gray-100 transition duration-300">
                                     <Pilcrow size={18} />
                                     <span>Parágrafo</span>
-                                </div>
-                                <div className="flex flex-row border gap-2 border-gray-300 rounded-lg px-3 py-1.5 items-center cursor-pointer hover:bg-gray-100 transition duration-300">
+                                </button>
+                                <button onClick={() => setContents([...contents, { type: "subTitle", text: "" }])} className="flex flex-row border gap-2 border-gray-300 rounded-lg px-3 py-1.5 items-center cursor-pointer hover:bg-gray-100 transition duration-300">
                                     <Heading2 size={18} />
                                     <span>Subtítulo</span>
-                                </div>
-                                <div className="flex flex-row border gap-2 border-gray-300 rounded-lg px-3 py-1.5 items-center cursor-pointer hover:bg-gray-100 transition duration-300">
+                                </button>
+                                <button onClick={() => setContents([...contents, { type: "image", text: "" }])} className="flex flex-row border gap-2 border-gray-300 rounded-lg px-3 py-1.5 items-center cursor-pointer hover:bg-gray-100 transition duration-300">
                                     <Image size={18} />
                                     <span>Imagem</span>
-                                </div>
+                                </button>
                             </div>
                         </div>
-                        <div className="w-full h-50 flex flex-col text-gray-400 items-center justify-center gap-2">
-                            <FileText size={60} className="" />
-                            <h3 className="text-md">Adicione blocos de conteúdo usando os botões acima</h3>
+                        <div className={`w-full min-h-50 h-fit flex flex-col text-gray-400 items-center ${contents.length === 0 ? 'justify-center' : 'justify-start'}  gap-2`}>
+                            {contents.length === 0 ? (
+                                <>
+                                    <FileText size={60} className="" />
+                                    <h3 className="text-md">Adicione blocos de conteúdo usando os botões acima</h3>
+                                </>
+                            ) : (
+                                contents.map((content, index) => {
+                                    if (content.type === 'paragraph') {
+                                        return (
+                                            <div className="flex flex-col group relative hover:border-[#fa6732] w-full border border-gray-300 h-30 items-start justify-start rounded-lg p-3" key={index}>
+                                                <textarea onChange={(e) => setContents(prev => { const newContents = [...prev]; newContents[index].text = e.target.value; return newContents })} key={index} value={content.text} placeholder="Escreva o parágrafo aqui" className="w-full block outline-none resize-none h-full" />
+                                                <button onClick={() => setContents(prev => prev.filter((_, i) => i !== index))} className="bg-red-500 items-center justify-center absolute hidden group-hover:flex -right-2 -top-2 w-6 h-6 rounded-full cursor-pointer hover:bg-red-600 transition duration-300">
+                                                    <X size={12} className="text-white" />
+                                                </button>
+                                            </div>
+                                        )
+                                    } else if (content.type === 'subTitle') {
+                                        return (
+                                            <div className="flex flex-col group relative hover:border-[#fa6732] w-full border border-gray-300 h-15 items-start justify-start rounded-lg p-3" key={index}>
+                                                <input onChange={(e) => setContents(prev => { const newContents = [...prev]; newContents[index].text = e.target.value; return newContents })} key={index} value={content.text} placeholder="Escreva o subtítulo aqui" className="w-full h-full outline-none text-xl font-bold" type="text" />
+                                                <button onClick={() => setContents(prev => prev.filter((_, i) => i !== index))} className="bg-red-500 items-center justify-center absolute hidden group-hover:flex -right-2 -top-2 w-6 h-6 rounded-full cursor-pointer hover:bg-red-600 transition duration-300">
+                                                    <X size={12} className="text-white" />
+                                                </button>
+                                            </div>
+                                        )
+                                    } else if (content.type === 'image') {
+                                        return (
+                                            <div className="flex flex-col group relative hover:border-[#fa6732] w-full border border-gray-300 h-10 items-start justify-start rounded-lg p-3" key={index}>
+                                                <input onChange={(e) => setContents(prev => { const newContents = [...prev]; newContents[index].text = e.target.value; return newContents })} key={index} value={content.text} placeholder="Cole a URL da imagem aqui" className="w-full outline-none" type="text" />
+                                                <button onClick={() => setContents(prev => prev.filter((_, i) => i !== index))} className="bg-red-500 items-center justify-center absolute hidden group-hover:flex -right-2 -top-2 w-6 h-6 rounded-full cursor-pointer hover:bg-red-600 transition duration-300">
+                                                    <X size={12} className="text-white" />
+                                                </button>
+                                            </div>
+                                        )
+                                    }
+                                })
+                            )}
                         </div>
                     </div>
                     <div className="flex flex-row w-full justify-end items-center gap-4">
