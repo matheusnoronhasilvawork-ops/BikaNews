@@ -11,9 +11,10 @@ import CreateNew from './createNew.tsx'
 import Contact from './contact.tsx'
 import AboutUs from './aboutUs.tsx'
 import PrivacyPolicies from './privacyPolicies.tsx'
+import Terms from './terms.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <PrivacyPolicies />
+    <Terms />
   </StrictMode>,
 )
