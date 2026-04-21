@@ -1,6 +1,6 @@
 import { Bug, Check, CheckCircle, FilePen, FileText, Gavel, GitPullRequestArrow, Handshake, LandPlot, MonitorX, Scale, Toolbox, TriangleAlert, UserRoundCog, X, XCircle } from "lucide-react";
-import Footer from "./components/footer";
-import Header from "./components/header";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
 export default function Terms() {
     return (

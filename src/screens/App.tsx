@@ -3,8 +3,8 @@ import bikanews from './assets/bikanews.png'
 import { Search, Menu, User, Clock, TrendingUp, Newspaper } from 'lucide-react'
 import { FaFacebook, FaInstagram, FaTwitter, FaArrowRight } from 'react-icons/fa'
 import tajMahal from './assets/tajMahal.png'
-import Header  from './components/header'
-import Footer from './components/footer'
+import Header  from '../components/header'
+import Footer from '../components/footer'
 
 //w-[clamp(500px,80vw,1400px)]
 //#fa6832

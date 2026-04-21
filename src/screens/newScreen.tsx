@@ -1,5 +1,5 @@
-import Footer from "./components/footer";
-import Header from "./components/header";
+import Footer from "../components/footer";
+import Header from "../components/header";
 import { Clock, User, Bookmark, Share2, Newspaper } from "lucide-react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import TajMahal from "./assets/tajMahal.png";

@@ -1,6 +1,6 @@
 import { Shield, Lock, Eye, UserCheck, Check, Database, Cookie, BrickWallShield, Baby, Siren } from "lucide-react";
-import Footer from "./components/footer";
-import Header from "./components/header";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
 export default function PrivacyPolicies() {
     return (
