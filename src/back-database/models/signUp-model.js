@@ -13,7 +13,13 @@ async function findUserByEmail(email) {
     return db.promise().query(query, [email]);
 };
 
+async function deleteUserById(id) {
+    const query = 'delete from users where id = ?'
+    return db.promise().query(query, [id])
+}
+
 export default  {
     signUp,
-    findUserByEmail
+    findUserByEmail,
+    deleteUserById
 }

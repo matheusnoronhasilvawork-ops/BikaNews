@@ -24,6 +24,24 @@ async function CreateUser(name, email, password, role_id) {
     }
 };
 
+async function deleteUserById(id) {
+    if (!id) {
+        throw { status: 400, message: 'id is required' }
+    } else {
+        const [result] = await model.deleteUserById(id);
+
+        console.log('affectrow: ' + result.affectedRows)
+
+        if (result.affectedRows === 0) {
+            throw { status: 404, message: 'User not found or already deleted' };
+        } else {
+            console.log('passou')
+            return result
+        }
+    }
+}
+
 export default {
-    CreateUser
+    CreateUser,
+    deleteUserById
 }
