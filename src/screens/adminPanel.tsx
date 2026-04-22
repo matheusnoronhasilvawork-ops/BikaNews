@@ -1,7 +1,7 @@
-import Footer from "./components/footer";
-import Header from "./components/header";
+import Footer from "../components/footer";
+import Header from "../components/header";
 import { TriangleAlert, Search, CheckCircle, Clock, Eye, User, CircleX, SquarePen, Trash2 } from "lucide-react";
-import TajMahal from "./assets/tajMahal.png";
+import TajMahal from "../assets/tajMahal.png";
 
 export default function AdminPanel() {
     return (

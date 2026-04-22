@@ -1,4 +1,4 @@
-import BikaNews from "./assets/bikaNews.png";
+import BikaNews from "../assets/bikaNews.png";
 import { Eye, Mail, UserRoundPlus, Lock } from "lucide-react";
 
 export default function SignUp() {

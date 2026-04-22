@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Footer from "./components/footer";
-import Header from "./components/header";
+import Footer from "../components/footer";
+import Header from "../components/header";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 
 export default function Contact() {

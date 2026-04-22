@@ -1,7 +1,7 @@
-import Footer from "./components/footer";
-import Header from "./components/header";
+import Footer from "../components/footer";
+import Header from "../components/header";
 import { Pencil, FileText, CircleCheckBig, Clock, CircleX, TrendingUp, CheckCircle, Eye, MessageSquare } from "lucide-react"
-import TajMahal from "./assets/tajMahal.png"
+import TajMahal from "../assets/tajMahal.png"
 
 export default function ColumnistPanel() {
     return (

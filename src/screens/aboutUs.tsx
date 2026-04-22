@@ -1,5 +1,5 @@
-import Footer from "./components/footer";
-import Header from "./components/header";
+import Footer from "../components/footer";
+import Header from "../components/header";
 import { Heart, Medal, Target, Users } from "lucide-react";
 
 export default function AboutUs() {

@@ -1,5 +1,5 @@
 import './App.css'
-import bikanews from './assets/bikanews.png'
+import bikanews from '../assets/bikanews.png'
 import { Search, Menu, User, Clock, TrendingUp, Newspaper } from 'lucide-react'
 import { FaFacebook, FaInstagram, FaTwitter, FaArrowRight } from 'react-icons/fa'
 import tajMahal from './assets/tajMahal.png'
