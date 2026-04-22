@@ -15,6 +15,6 @@ import Terms from './screens/terms.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Terms />
+    <SignUp />
   </StrictMode>,
 )
