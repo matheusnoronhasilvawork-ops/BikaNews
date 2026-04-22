@@ -1,9 +1,12 @@
 import express from 'express';
 import db from './db.js';
 import signUpController from './controller/signup-controller.js';
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
 
 app.get('/teste', (req, res) => {
     res.send('Hello World!');

@@ -1,7 +1,51 @@
 import BikaNews from "../assets/bikaNews.png";
 import { Eye, Mail, UserRoundPlus, Lock } from "lucide-react";
+import axios from "axios";
+import { useState } from "react";
 
+
+
+async function createUser(name: string, email: string, password: string, confirmPassword: string, role_id: number) {
+
+    try {
+
+        if (name === "" || email === "" || password === "" || confirmPassword === "") {
+            alert("Preencha todos os campos")
+            return
+        } else if (name.length < 3 || name.length > 100 || email.length > 100 || password.length < 5 || password.length > 20) {
+            alert("Os campos têm tamanho inválido")
+            return
+        } else if (password !== confirmPassword) {
+            alert("As senhas não coincidem")
+            return
+        } else {
+            const response = await axios.post("http://localhost:3000/signup", {
+                name: name,
+                email: email,
+                password: password,
+                role_id: role_id
+            })
+
+            alert(response.data.message)
+        }
+    } catch (error) {
+        alert(error)
+    }
+
+}
 export default function SignUp() {
+
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [role, setRole] = useState(3)
+
+    function handleSubmit(e: any) {
+        e.preventDefault()
+        createUser(name, email, password, confirmPassword, role)
+    }
+
     return (
         <div className="h-screen bg-gray-50 pb-5 pt-2  flex flex-col items-center justify-center">
             <div className="w-100 h-full items-center justify-center flex flex-col">
@@ -11,25 +55,25 @@ export default function SignUp() {
                     <h2 className="text-sm">Cadastre-se e comece a escrever hoje mesmo</h2>
                 </div>
                 <div className="flex flex-col w-full bg-white px-6 py-4 h-fit rounded-2xl shadow-md">
-                    <form action="" className="flex flex-col h-full w-full gap-4 items-center">
+                    <form onSubmit={handleSubmit} action="createUser" className="flex flex-col h-full w-full gap-4 items-center">
                         <div className="flex flex-col gap-2 w-full h-8 mb-4">
                             <span className="text-sm font-medium">Nome completo</span>
                             <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                <input className="outline-none w-full text-sm" placeholder="Seu nome" />
+                                <input className="outline-none w-full text-sm" placeholder="Seu nome" value={name} onChange={(e) => setName(e.target.value)} />
                             </div>
                         </div>
                         <div className="flex flex-col gap-2 w-full h-8 mb-4">
                             <span className="text-sm font-medium">Email</span>
                             <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
                                 <Mail size={15} className="text-gray-400" />
-                                <input className="outline-none w-full text-sm" placeholder="seu@email.com" />
+                                <input className="outline-none w-full text-sm" placeholder="seu@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
                         </div>
                         <div className="flex flex-col gap-2 w-full h-8 mb-4">
                             <span className="text-sm font-medium">Senha</span>
                             <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
                                 <Lock size={20} className="text-gray-400" />
-                                <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" />
+                                <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                                 <Eye size={20} className="text-gray-400 outline-none display-none ml-auto" />
                             </div>
                         </div>
@@ -37,7 +81,7 @@ export default function SignUp() {
                             <span className="text-sm font-medium">Confirmar senha</span>
                             <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
                                 <Lock size={20} className="text-gray-400" />
-                                <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" />
+                                <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
                                 <Eye size={20} className="text-gray-400 outline-none display-none ml-auto" />
                             </div>
                         </div>
