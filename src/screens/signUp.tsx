@@ -1,7 +1,7 @@
 import BikaNews from "../assets/bikaNews.png";
-import { Eye, Mail, UserRoundPlus, Lock } from "lucide-react";
+import { Eye, Mail, UserRoundPlus, Lock, Pin, MapPin } from "lucide-react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -33,23 +33,51 @@ async function createUser(name: string, email: string, password: string, confirm
     }
 
 }
+
 export default function SignUp() {
+
+
+    useEffect(() => {
+        getStatesData()
+    }, [])
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [role, setRole] = useState(3)
+    let [firstStep, setFirstStep] = useState(false)
+    const [states, setStates] = useState<any[]>([])
+    const [cities, setCities] = useState<any[]>([])
+    const [selectedState, setSelectedState] = useState<number | null>(null)
 
     function handleSubmit(e: any) {
         e.preventDefault()
         createUser(name, email, password, confirmPassword, role)
     }
 
+    async function getStatesData() {
+        const response = await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
+
+        console.log(response)
+
+        setStates(response.data)
+    }
+
+    async function getCitiesData(stateId: number) {
+
+        setCities([])
+        const response = await axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${stateId}/municipios`)
+
+        console.log(response)
+
+        setCities(response.data)
+
+
+    }
+
     return (
         <div className="h-screen bg-gray-100 pb-5 pt-2  flex flex-col items-center overflow-hidden justify-center relative">
-            <div className="bg-[#fa6732] h-180 -bottom-100 -left-80 w-180 rounded-full absolute" />
-            <div className="bg-[#fa6732] h-180 -top-100 -right-80 w-180 rounded-full absolute" />
             <div className="w-100 h-full items-center justify-center flex flex-col">
                 <div className="flex flex-col items-center justify-center gap-2 mb-5">
                     <h1 className="text-3xl font-bold">Crie sua conta</h1>
@@ -57,39 +85,95 @@ export default function SignUp() {
                 </div>
                 <div className="flex flex-col w-full bg-white px-6 py-4 h-fit rounded-2xl shadow-md">
                     <form onSubmit={handleSubmit} action="createUser" className="flex flex-col h-full w-full gap-2 items-center">
-                        <div className="flex flex-col gap-2 w-full h-fit">
-                            <span className="text-sm font-medium">Nome completo</span>
-                            <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                <input className="outline-none w-full text-sm" placeholder="Seu nome" value={name} onChange={(e) => setName(e.target.value)} />
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-2 w-full h-fit">
-                            <span className="text-sm font-medium">Email</span>
-                            <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                <Mail size={15} className="text-gray-400" />
-                                <input className="outline-none w-full text-sm" placeholder="seu@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-2 w-full h-fit">
-                            <span className="text-sm font-medium">Senha</span>
-                            <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                <Lock size={20} className="text-gray-400" />
-                                <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                                <Eye size={20} className="text-gray-400 outline-none display-none ml-auto" />
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-2 w-full h-fit">
-                            <span className="text-sm font-medium">Confirmar senha</span>
-                            <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                <Lock size={20} className="text-gray-400" />
-                                <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                                <Eye size={20} className="text-gray-400 outline-none display-none ml-auto" />
-                            </div>
-                        </div>
-                        <button className="text-white bg-[#fa6732] h-10 hover:bg-[#c64f24] hover:scale-103 transition duration-300 rounded-lg px-4 py-2 w-full flex flex-row mt-2 items-center justify-center gap-2 cursor-pointer">
-                            <UserRoundPlus size={20} />
-                            <span>Criar conta</span>
-                        </button>
+                        {firstStep == false ? (
+                            <>
+                                <div className="flex flex-col gap-2 w-full h-fit">
+                                    <span className="text-sm font-medium">Nome completo</span>
+                                    <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
+                                        <input className="outline-none w-full text-sm" placeholder="Seu nome" value={name} onChange={(e) => setName(e.target.value)} />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col gap-2 w-full h-fit">
+                                    <span className="text-sm font-medium">Email</span>
+                                    <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
+                                        <Mail size={15} className="text-gray-400" />
+                                        <input className="outline-none w-full text-sm" placeholder="seu@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col gap-2 w-full h-fit">
+                                    <span className="text-sm font-medium">Senha</span>
+                                    <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
+                                        <Lock size={20} className="text-gray-400" />
+                                        <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                        <Eye size={20} className="text-gray-400 outline-none display-none ml-auto" />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col gap-2 w-full h-fit">
+                                    <span className="text-sm font-medium">Confirmar senha</span>
+                                    <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
+                                        <Lock size={20} className="text-gray-400" />
+                                        <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                                        <Eye size={20} className="text-gray-400 outline-none display-none ml-auto" />
+                                    </div>
+                                </div>
+                                <div onClick={() => setFirstStep(true)} className="text-white bg-[#fa6732] h-10 hover:bg-[#c64f24] hover:scale-103 transition duration-300 rounded-lg px-4 py-2 w-full flex flex-row mt-2 items-center justify-center gap-2 cursor-pointer">
+                                    <UserRoundPlus size={20} />
+                                    <span>Criar conta</span>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className="flex flex-col gap-2 w-full h-fit">
+                                    <span className="text-sm font-medium">Telefone</span>
+                                    <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
+                                        <input className="outline-none w-full text-sm" placeholder="Seu nome" value={name} onChange={(e) => setName(e.target.value)} />
+                                    </div>
+                                </div>
+                                <div className="flex flex-col gap-2 w-full h-fit">
+                                    <span className="text-sm font-medium">Estado</span>
+                                    <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
+                                        <MapPin size={15} className="text-gray-400" />
+                                        <select className="w-full outline-none" onChange={(e) => {
+                                            const stateId = Number(e.target.value)
+                                            setSelectedState(stateId)
+                                            getCitiesData(stateId)
+                                        }}>
+                                            {states.map((state, index) => (
+                                                <option key={index} value={state.id}>{state.nome}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col gap-2 w-full h-fit">
+                                    <span className="text-sm font-medium">Cidade</span>
+                                    <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
+                                        <MapPin size={15} className="text-gray-400" />
+                                        <select className="w-full outline-none">
+                                            {selectedState === null ? (
+                                                <option>Selecione um estado primeiro</option>
+                                            ) : (
+                                                cities.map((city, index) => (
+                                                    <option key={index} value={city.nome}>{city.nome}</option>
+                                                ))
+                                            )
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col gap-2 w-full h-fit">
+                                    <span className="text-sm font-medium">Confirmar senha</span>
+                                    <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
+                                        <Lock size={20} className="text-gray-400" />
+                                        <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                                        <Eye size={20} className="text-gray-400 outline-none display-none ml-auto" />
+                                    </div>
+                                </div>
+                                <button className="text-white bg-[#fa6732] h-10 hover:bg-[#c64f24] hover:scale-103 transition duration-300 rounded-lg px-4 py-2 w-full flex flex-row mt-2 items-center justify-center gap-2 cursor-pointer">
+                                    <UserRoundPlus size={20} />
+                                    <span>Criar conta</span>
+                                </button>
+                            </>
+                        )}
                         <div className="flex flex-row items-center w-full">
                             <div className="h-0.5 w-full bg-gray-100" />
                             <span className="px-3">ou</span>
