@@ -15,9 +15,9 @@ app.get('/teste', (req, res) => {
 app.post('/signup', async (req, res) => {
 
     try {
-        const { name, email, password, role_id } = req.body;
+        const { name, email, password, role_id, phone, stateName, cityName } = req.body;
 
-        const result = await signUpController.CreateUser(name, email, password, role_id, res);
+        const result = await signUpController.CreateUser(name, email, password, role_id, phone, stateName, cityName);
 
         if (result) {
             console.log('user created with id: ' + result.insertId)

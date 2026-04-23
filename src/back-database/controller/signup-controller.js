@@ -1,28 +1,74 @@
 import bcrypt from 'bcrypt';
 import model from '../models/signUp-model.js';
 
-async function CreateUser(name, email, password, role_id) {
+async function CreateUser(name, email, password, role_id, phone, stateName, cityName) {
 
-    if (!name || !email || !password || !role_id) {
+    // 🔹 validações
+    if (!name || !email || !password || !role_id || !phone || !stateName || !cityName) {
         throw { status: 400, message: 'need to fill all the fields' }
-    } else if (name.length > 100 || email.length > 100 || password.length > 20 || name.length < 3 || password.length < 5) {
-        throw { status: 400, message: 'Some variable has an invalid length' };
-    } else {
-        const existingUser = await model.findUserByEmail(email);
-
-        if (existingUser[0].length > 0) {
-            throw { status: 400, message: 'User already exists' };
-        } else {
-            const [result] = await model.signUp(name, email, password, role_id);
-
-            if (result) {
-                return result;
-            } else {
-                throw { status: 500, message: 'Error inserting user' };
-            }
-        }
     }
-};
+
+    if (name.length > 100 || email.length > 100 || password.length > 20 || name.length < 3 || password.length < 5) {
+        throw { status: 400, message: 'Some variable has an invalid length' };
+    }
+
+    const existingUser = await model.findUserByEmail(email);
+
+    if (existingUser[0].length > 0) {
+        throw { status: 400, message: 'User already exists' };
+    }
+
+    const existingState = await model.findStateByName(stateName);
+    const existingCity = await model.findCityName(cityName);
+
+    let stateId;
+    let cityId;
+
+    console.log('estado encontrado:', existingState[0]);
+    console.log('cidade encontrada:', existingCity[0]);
+
+    if (existingState[0].length === 0) {
+        console.log('exisiting', existingState)
+        const [createStateResult] = await model.createState(stateName);
+        stateId = createStateResult.insertId;
+
+        console.log('estado criado:', stateId);
+    } else {
+        console.log('exisiting', existingState)
+        stateId = existingState[0][0].id;
+
+        console.log('estado já existe:', stateId);
+    }
+
+    if (existingCity[0].length === 0) {
+        console.log('exisiting', existingCity)
+        const [createCityResult] = await model.createCity(cityName, stateId);
+        cityId = createCityResult.insertId;
+
+        console.log('cidade criada:', cityId);
+    } else {
+        console.log('exisiting', existingCity)
+        cityId = existingCity[0][0].id;
+
+        console.log('cidade já existe:', cityId);
+    }
+
+    const [result] = await model.signUp(
+        name,
+        email,
+        password,
+        role_id,
+        phone,
+        stateId,
+        cityId
+    );
+
+    if (!result) {
+        throw { status: 500, message: 'Error inserting user' };
+    }
+
+    return result;
+}
 
 async function deleteUserById(id) {
     if (!id) {

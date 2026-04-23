@@ -56,12 +56,16 @@ export default function SignUp() {
                     cityName: cityName
                 }
 
+                console.log(stateName)
+
                 console.log(data)
                 const response = await axios.post("http://localhost:3000/signup", data)
 
+                console.log(response)
                 alert(response.data.message)
             }
         } catch (error) {
+            console.log(error)
             alert(error)
         }
 
