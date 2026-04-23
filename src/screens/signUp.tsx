@@ -21,7 +21,7 @@ export default function SignUp() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [role] = useState(3)
+    const [role] = useState(2)
     let [firstStep, setFirstStep] = useState(false)
     const [phone, setPhone] = useState("")
     const [states, setStates] = useState<any[]>([])
@@ -58,14 +58,9 @@ export default function SignUp() {
                 }
 
                 console.log(data)
-                /*const response = await axios.post("http://localhost:3000/signup", {
-                    name: name,
-                    email: email,
-                    password: password,
-                    role_id: role_id
-                })*/
+                const response = await axios.post("http://localhost:3000/signup", data)
 
-                //alert(response.data.message)
+                alert(response.data.message)
             }
         } catch (error) {
             alert(error)
