@@ -1,67 +1,89 @@
-import BikaNews from "../assets/bikaNews.png";
-import { Eye, Mail, UserRoundPlus, Lock, Pin, MapPin } from "lucide-react";
+import { Eye, Mail, UserRoundPlus, Lock, MapPin } from "lucide-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-
-
-async function createUser(name: string, email: string, password: string, confirmPassword: string, role_id: number) {
-
-    try {
-
-        if (name === "" || email === "" || password === "" || confirmPassword === "") {
-            alert("Preencha todos os campos")
-            return
-        } else if (name.length < 3 || name.length > 100 || email.length > 100 || password.length < 5 || password.length > 20) {
-            alert("Os campos têm tamanho inválido")
-            return
-        } else if (password !== confirmPassword) {
-            alert("As senhas não coincidem")
-            return
-        } else {
-            const response = await axios.post("http://localhost:3000/signup", {
-                name: name,
-                email: email,
-                password: password,
-                role_id: role_id
-            })
-
-            alert(response.data.message)
-        }
-    } catch (error) {
-        alert(error)
-    }
-
-}
-
+import { IMaskInput } from 'react-imask'
 export default function SignUp() {
 
 
     useEffect(() => {
-        getStatesData()
+        const fetchData = async () => {
+            const statesData = await getStatesData()
+
+            console.log(statesData)
+            if (statesData) {
+                await getCitiesData(statesData[0].id)
+            }
+        }
+        fetchData()
     }, [])
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [role, setRole] = useState(3)
+    const [role] = useState(3)
     let [firstStep, setFirstStep] = useState(false)
+    const [phone, setPhone] = useState("")
     const [states, setStates] = useState<any[]>([])
     const [cities, setCities] = useState<any[]>([])
-    const [selectedState, setSelectedState] = useState<number | null>(null)
+    const [selectStateId, setselectStateId] = useState<number | null>(null)
+    const [selectStateName, setSelectStateName] = useState<string>("")
+    const [selectCityName, setSelectCityName] = useState<string>("")
+
+    async function createUser(name: string, email: string, password: string, confirmPassword: string, role_id: number, phone:string, stateName: string, cityName: string) {
+
+        try {
+
+            if (name === "" || email === "" || password === "" || confirmPassword === "" || phone === "" || stateName === "" || cityName === "") {
+                alert("Preencha todos os campos")
+                setFirstStep(false)
+                return
+            } else if (name.length < 3 || name.length > 100 || email.length > 100 || password.length < 5 || password.length > 20) {
+                alert("Os campos têm tamanho inválido")
+                setFirstStep(false)
+                return
+            } else if (password !== confirmPassword) {
+                alert("As senhas não coincidem")
+                setFirstStep(false)
+                return
+            } else {
+                const data = {
+                    name: name,
+                    email: email,
+                    password: password,
+                    role_id: role_id,
+                    phone: phone,
+                    stateName: stateName,
+                    cityName: cityName
+                }
+
+                console.log(data)
+                /*const response = await axios.post("http://localhost:3000/signup", {
+                    name: name,
+                    email: email,
+                    password: password,
+                    role_id: role_id
+                })*/
+
+                //alert(response.data.message)
+            }
+        } catch (error) {
+            alert(error)
+        }
+
+    }
 
     function handleSubmit(e: any) {
         e.preventDefault()
-        createUser(name, email, password, confirmPassword, role)
+        createUser(name, email, password, confirmPassword, role, phone, selectStateName, selectCityName)
     }
 
     async function getStatesData() {
         const response = await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
 
-        console.log(response)
-
         setStates(response.data)
+        setSelectStateName(response.data[0].nome)
+        return response.data
     }
 
     async function getCitiesData(stateId: number) {
@@ -72,6 +94,7 @@ export default function SignUp() {
         console.log(response)
 
         setCities(response.data)
+        setSelectCityName(response.data[0].nome)
 
 
     }
@@ -90,7 +113,7 @@ export default function SignUp() {
                                 <div className="flex flex-col gap-2 w-full h-fit">
                                     <span className="text-sm font-medium">Nome completo</span>
                                     <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                        <input className="outline-none w-full text-sm" placeholder="Seu nome" value={name} onChange={(e) => setName(e.target.value)} />
+                                        <input className="outline-none w-full text-sm" placeholder="Seu nome completo" value={name} onChange={(e) => setName(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-2 w-full h-fit">
@@ -126,7 +149,7 @@ export default function SignUp() {
                                 <div className="flex flex-col gap-2 w-full h-fit">
                                     <span className="text-sm font-medium">Telefone</span>
                                     <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                        <input className="outline-none w-full text-sm" placeholder="Seu nome" value={name} onChange={(e) => setName(e.target.value)} />
+                                        <IMaskInput mask={'00 00000-0000'} className="outline-none w-full text-sm" placeholder="xx xxxxx-xxxx" value={phone} onChange={(e) => setPhone(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-2 w-full h-fit">
@@ -135,7 +158,9 @@ export default function SignUp() {
                                         <MapPin size={15} className="text-gray-400" />
                                         <select className="w-full outline-none" onChange={(e) => {
                                             const stateId = Number(e.target.value)
-                                            setSelectedState(stateId)
+                                            const stateName = String(e.target.options[e.target.selectedIndex].text)
+                                            setselectStateId(stateId)
+                                            setSelectStateName(stateName)
                                             getCitiesData(stateId)
                                         }}>
                                             {states.map((state, index) => (
@@ -148,24 +173,15 @@ export default function SignUp() {
                                     <span className="text-sm font-medium">Cidade</span>
                                     <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
                                         <MapPin size={15} className="text-gray-400" />
-                                        <select className="w-full outline-none">
-                                            {selectedState === null ? (
-                                                <option>Selecione um estado primeiro</option>
-                                            ) : (
-                                                cities.map((city, index) => (
-                                                    <option key={index} value={city.nome}>{city.nome}</option>
-                                                ))
-                                            )
+                                        <select className="w-full outline-none" onChange={(e) => {
+                                            const cityName = e.target.value
+                                            setSelectCityName(cityName)
+                                        }}>
+                                            {cities.map((city, index) => (
+                                                <option key={index} value={city.nome}>{city.nome}</option>
+                                            ))
                                             }
                                         </select>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col gap-2 w-full h-fit">
-                                    <span className="text-sm font-medium">Confirmar senha</span>
-                                    <div className="flex flex-row border h-full border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                        <Lock size={20} className="text-gray-400" />
-                                        <input className="outline-none w-full text-sm" placeholder="sua senha" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                                        <Eye size={20} className="text-gray-400 outline-none display-none ml-auto" />
                                     </div>
                                 </div>
                                 <button className="text-white bg-[#fa6732] h-10 hover:bg-[#c64f24] hover:scale-103 transition duration-300 rounded-lg px-4 py-2 w-full flex flex-row mt-2 items-center justify-center gap-2 cursor-pointer">
