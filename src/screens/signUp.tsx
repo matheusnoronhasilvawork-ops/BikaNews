@@ -26,7 +26,6 @@ export default function SignUp() {
     const [phone, setPhone] = useState("")
     const [states, setStates] = useState<any[]>([])
     const [cities, setCities] = useState<any[]>([])
-    const [selectStateId, setselectStateId] = useState<number | null>(null)
     const [selectStateName, setSelectStateName] = useState<string>("")
     const [selectCityName, setSelectCityName] = useState<string>("")
 
@@ -154,7 +153,6 @@ export default function SignUp() {
                                         <select className="w-full outline-none" onChange={(e) => {
                                             const stateId = Number(e.target.value)
                                             const stateName = String(e.target.options[e.target.selectedIndex].text)
-                                            setselectStateId(stateId)
                                             setSelectStateName(stateName)
                                             getCitiesData(stateId)
                                         }}>
