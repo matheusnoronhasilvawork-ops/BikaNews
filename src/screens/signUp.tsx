@@ -29,7 +29,7 @@ export default function SignUp() {
     const [selectStateName, setSelectStateName] = useState<string>("")
     const [selectCityName, setSelectCityName] = useState<string>("")
 
-    async function createUser(name: string, email: string, password: string, confirmPassword: string, role_id: number, phone:string, stateName: string, cityName: string) {
+    async function createUser(name: string, email: string, password: string, confirmPassword: string, role_id: number, phone: string, stateName: string, cityName: string) {
 
         try {
 
@@ -64,11 +64,16 @@ export default function SignUp() {
                 console.log(response)
                 alert(response.data.message)
             }
-        } catch (error) {
+        } catch (error: any) {
             console.log(error)
-            alert(error)
-        }
 
+            const errorMessage = {
+                message: error.response.data.error,
+                status: error.response.status
+            }
+
+            alert(`Erro: ${errorMessage.message} - ${errorMessage.status}`)
+        }
     }
 
     function handleSubmit(e: any) {

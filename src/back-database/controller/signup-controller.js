@@ -3,7 +3,6 @@ import model from '../models/signUp-model.js';
 
 async function CreateUser(name, email, password, role_id, phone, stateName, cityName) {
 
-    // 🔹 validações
     if (!name || !email || !password || !role_id || !phone || !stateName || !cityName) {
         throw { status: 400, message: 'need to fill all the fields' }
     }
@@ -51,6 +50,12 @@ async function CreateUser(name, email, password, role_id, phone, stateName, city
         cityId = existingCity[0][0].id;
 
         console.log('cidade já existe:', cityId);
+    }
+
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+    if(!validEmail) {
+        throw { status: 400, message: "type a valid email"}
     }
 
     const [result] = await model.signUp(
