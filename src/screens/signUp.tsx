@@ -2,6 +2,8 @@ import { Eye, Mail, UserRoundPlus, Lock, MapPin } from "lucide-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { IMaskInput } from 'react-imask'
+import { Link } from "react-router-dom"
+
 export default function SignUp() {
 
 
@@ -73,6 +75,7 @@ export default function SignUp() {
             }
 
             alert(`Erro: ${errorMessage.message} - ${errorMessage.status}`)
+            setFirstStep(false)
         }
     }
 
@@ -214,7 +217,7 @@ export default function SignUp() {
                                 <span>Facebook</span>
                             </div>
                         </div>
-                        <span className="text-sm">Já tem uma conta? <span className="text-[#fa6732] hover:text-[#c64f24] cursor-pointer font-medium">Faça login </span> </span>
+                        <span className="text-sm">Já tem uma conta? <Link to={"/signin"} className="text-[#fa6732] hover:text-[#c64f24] cursor-pointer font-medium">Faça login </Link> </span>
                     </form>
                 </div>
                 <div className="flex flex-row gap-4 text-[0.75rem] text-gray-600 mt-6">

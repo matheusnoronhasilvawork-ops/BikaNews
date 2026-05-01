@@ -4,7 +4,7 @@ import { Clock, User, Bookmark, Share2, Newspaper } from "lucide-react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import TajMahal from "../assets/tajMahal.png";
 
-export function NewScreen() {
+export default function NewScreen() {
     return (
         <div className="min-h-screen flex flex-col gap-4 items-center">
             <Header />

@@ -1,7 +1,7 @@
 import BikaNews from "../assets/bikaNews.png";
 import { Eye, Mail, ArrowRightToLine } from "lucide-react";
 
-export default function Login() {
+export default function SignIn() {
     return (
         <div className="h-screen bg-gray-50 py-10 flex flex-col items-center justify-center">
             <div className="w-100 h-full items-center justify-center flex flex-col">
