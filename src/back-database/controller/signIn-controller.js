@@ -17,16 +17,20 @@ async function signIn(email, password) {
 
     const existingUser = await model.findUserByEmail(email)
 
+    console.log(existingUser);
     if(existingUser[0].length > 0) {
-        console.log(existingUser);
 
-        const passwordUser = existingUser[0].password
+        const passwordUser = existingUser[0][0].password
 
-        const isValid = bcrypt.compare(password, passwordUser)
+        console.log(passwordUser)
 
+        const isValid =await bcrypt.compare(password, passwordUser)
+        console.log('isValid: ', isValid)
         if(isValid){
             
-            const [result] = existingUser
+            const [result] = existingUser[0]
+
+            console.log(result)
 
             return result
         } else {

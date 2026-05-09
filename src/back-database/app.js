@@ -56,13 +56,15 @@ app.delete('/delete-user/:id', async (req, res) => {
 
 //------------------------------- signin ----------------------------
 
-app.get('/signin', async (req, res) => {
+app.post('/signin', async (req, res) => {
 
     try {
 
         console.log(req.body)
         const {email, password} = req.body
         const result = await signInController.signIn(email, password)
+
+        return res.status(200).json({ message: "signIn successfully"})
 
     } catch (error) {
         console.log("full error", error)

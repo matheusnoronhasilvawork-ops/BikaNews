@@ -1,7 +1,49 @@
+import axios from "axios";
 import BikaNews from "../assets/bikaNews.png";
 import { Eye, Mail, ArrowRightToLine } from "lucide-react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const navigate = useNavigate()
+
+    function handleSubmit(e:any){
+        e.preventDefault()
+        signIn(email, password)
+    }
+    async function signIn(email:string, password:string){
+        
+        try {
+            
+            if(password.length > 20){
+                alert("senha deve ser menor que 20 caracteres")
+            } else if(password.length < 5){
+                alert("senha deve ter mais que 5 caracters")
+            } else {
+
+                const data = {
+                    email: email,
+                    password: password
+                }
+
+                const response = await axios.post("http://localhost:3000/signin", data)
+                alert(response.data.message)
+                navigate('/home')
+            }
+        } catch (error:any) {
+            console.log(error)
+
+            const errorMessage={
+                message: error.response.data.error,
+                status: error.response.status
+            }
+
+            alert(`Erro: ${errorMessage.status} - ${errorMessage.message}`)
+        }
+    }
     return (
         <div className="h-screen bg-gray-50 py-10 flex flex-col items-center justify-center">
             <div className="w-100 h-full items-center justify-center flex flex-col">
@@ -11,19 +53,19 @@ export default function SignIn() {
                     <h2 className="text-sm">Entre para acessar seu painel de colunista</h2>
                 </div>
                 <div className="flex flex-col w-full bg-white px-6 py-4 h-full rounded-2xl shadow-md">
-                    <form action="" className="flex flex-col h-full w-full gap-4 items-center">
+                    <form onSubmit={handleSubmit} action="signIn" className="flex flex-col h-full w-full gap-4 items-center">
                         <div className="flex flex-col gap-2 w-full">
                             <span className="text-sm font-medium">Email</span>
                             <div className="flex flex-row border border-gray-300 rounded-lg p-3 gap-3 items-center">
                                 <Mail size={20} className="text-gray-400" />
-                                <input className="outline-none w-full" placeholder="seu@email.com" />
+                                <input value={email} onChange={(e) => {setEmail(e.target.value)}} className="outline-none w-full" placeholder="seu@email.com" />
                             </div>
                         </div>
                         <div className="flex flex-col gap-2 w-full">
                             <span className="text-sm font-medium">Senha</span>
                             <div className="flex flex-row border border-gray-300 rounded-lg p-3 gap-3 items-center">
                                 <Mail size={20} className="text-gray-400" />
-                                <input className="outline-none w-full" placeholder="sua senha" type="password" />
+                                <input value={password} onChange={(e) => {setPassword(e.target.value)}} className="outline-none w-full" placeholder="sua senha" type="password" />
                                 <Eye size={20} className="text-gray-400 outline-none display-none ml-auto" />
                             </div>
                         </div>
@@ -60,7 +102,7 @@ export default function SignIn() {
                                 <span>Facebook</span>
                             </div>
                         </div>
-                        <span className="text-sm">Não tem uma conta? <span className="text-[#fa6732] hover:text-[#c64f24] cursor-pointer font-medium">Cadastre-se gratuitamente</span> </span>
+                        <span className="text-sm">Não tem uma conta? <Link to={"/signup"} className="text-[#fa6732] hover:text-[#c64f24] cursor-pointer font-medium">Cadastre-se gratuitamente</Link> </span>
                     </form>
                 </div>
                 <div className="flex flex-row gap-4 text-[0.75rem] text-gray-600 mt-6">
