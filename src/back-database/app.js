@@ -1,6 +1,7 @@
 import express from 'express';
 import db from './db.js';
 import signUpController from './controller/signup-controller.js';
+import signInController from './controller/signIn-controller.js'
 import cors from 'cors';
 
 const app = express();
@@ -11,6 +12,8 @@ app.use(cors());
 app.get('/teste', (req, res) => {
     res.send('Hello World!');
 });
+
+//----------------------- signup --------------------------
 
 app.post('/signup', async (req, res) => {
 
@@ -31,11 +34,11 @@ app.post('/signup', async (req, res) => {
     }
 });
 
-app.delete('/delete-signup/:id', async (req, res) => {
+app.delete('/delete-user/:id', async (req, res) => {
 
     try {
 
-         console.log('🔥 ENTREI NA ROTA DELETE');
+        console.log('🔥 ENTREI NA ROTA DELETE');
         const { id } = req.params;
 
         const result = await signUpController.deleteUserById(id)
@@ -49,6 +52,22 @@ app.delete('/delete-signup/:id', async (req, res) => {
         return res.status(error.status || 500).json({ error: error.message || 'Internal Server Error' });
     }
 
+})
+
+//------------------------------- signin ----------------------------
+
+app.get('/signin', async (req, res) => {
+
+    try {
+
+        console.log(req.body)
+        const {email, password} = req.body
+        const result = await signInController.signIn(email, password)
+
+    } catch (error) {
+        console.log("full error", error)
+        return res.status(error.status).json({ error: error.message})
+    }
 })
 
 app.listen(3000, () => {
