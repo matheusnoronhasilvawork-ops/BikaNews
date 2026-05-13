@@ -2,6 +2,7 @@ import express from 'express';
 import db from './db.js';
 import signUpController from './controller/signup-controller.js';
 import signInController from './controller/signIn-controller.js'
+import createNewController from './controller/createNew-controller.js';
 import cors from 'cors';
 
 const app = express();
@@ -72,6 +73,21 @@ app.post('/signin', async (req, res) => {
     }
 })
 
+//------------------------ create news --------------------------
+
+app.post('/create-new', async (req, res) => {
+
+    try {
+        
+        const { title, mainImage, userId, categoryId, texts } = req.body
+
+        const result = await createNewController.createNew(title, mainImage, userId, categoryId, texts)
+        return res.status(201).json({ message: "new created successfully"})
+    } catch (error) {
+        console.log("full error", error)
+        return res.status(error.status).json({ error: error.message})
+    }
+})
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
 });
