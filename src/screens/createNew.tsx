@@ -2,22 +2,73 @@ import { useState } from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { ArrowLeft, Save, Info, Pilcrow, Heading2, Image, FileText, X } from "lucide-react";
+import axios from "axios";
 
 type content = {
     type: "paragraph" | "subTitle" | "image";
     text: string;
 }[];
 
+type texts = {
+    text: string
+    type: "paragraph" | "subTitle"
+    paragraph_order: number
+}[]
+
+type images = {
+    url: string
+    image_order: number
+}[]
+
 export default function CreateNew() {
 
     const [contents, setContents] = useState<content>([]);
     const [categories, setCategories] = useState<string[]>(["Política", "Economia", "Esportes", "Entretenimento", "Tecnologia", "Saúde"]);
+    const [selectedCategory, setSelectedCategory] = useState<string>(categories[0]);
+    const [title, setTitle] = useState<string>("")
+    const [mainImage, setMainImage] = useState<string>("")
+    const [userId, setUserId] = useState<number>(1)
+    const [texts, setTexts] = useState<texts>([])
+    const [images, setImages] = useState<images>([])
+
+    async function handleCreateNew(e:any) {
+        e.preventDefault()
+        submitNew(title, mainImage, userId, categories.indexOf(selectedCategory), contents)
+    }
+
+    async function submitNew(title: string, mainImage: string, userId: number, categoryId: number, contents: content) {
+
+        contents.forEach((content, index) => {
+            if (content.type === "paragraph") {
+                setTexts([...texts, { text: content.text, type: content.type, paragraph_order: index }])
+            } else if (content.type === "subTitle") {
+                setTexts([...texts, { text: content.text, type: content.type, paragraph_order: index }])
+            } else if (content.type === "image") {
+                setImages([...images, { url: content.text, image_order: index}])
+            }
+        })
+
+        const data = {
+            title: title,
+            mainImage: mainImage,
+            userid: userId,
+            categoryId: categoryId,
+            texts: texts,
+            images: images
+        }
+
+        console.log("data to submit", data)
+
+        const response = await axios.post("http://localhost:3000/createnew", data)
+
+        alert(response.data.message)
+    }
 
     return (
         <div className="h-screen flex flex-col items-center">
             <Header />
             <main className="w-full flex flex-col flex-1 bg-gray-50 items-center justify-center">
-                <div className="flex flex-col w-200 h-full py-5 gap-5">
+                <form onSubmit={handleCreateNew} action={"createnew"} className="flex flex-col w-200 h-full py-5 gap-5">
                     <div className="text-black gap-2 flex flex-row items-center cursor-pointer hover:text-[#fa6732] ">
                         <ArrowLeft size={20} className="" />
                         <span>Voltar</span>
@@ -44,14 +95,14 @@ export default function CreateNew() {
                             <div className="flex flex-col gap-2">
                                 <span>Título da Notícia</span>
                                 <div className="flex flex-row border border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                    <input className="outline-none w-full" type="text" placeholder="Digite o título da notícia..." />
+                                    <input className="outline-none w-full" type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Digite o título da notícia..." />
                                 </div>
                             </div>
                             <div className="flex flex-row w-full gap-4">
                                 <div className="flex flex-col gap-2 flex-1">
                                     <span>Categoria</span>
                                     <div className="flex flex-row border border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                        <select className="outline-none w-full">
+                                        <select className="outline-none w-full" onChange={(e) => setSelectedCategory(e.target.options[e.target.selectedIndex].value)} value={selectedCategory}>
                                             {categories.map((category, index) => (
                                                 <option key={index} value={category}>
                                                     {category}
@@ -63,7 +114,7 @@ export default function CreateNew() {
                                 <div className="flex flex-col gap-2 flex-1">
                                     <span>Imagem de destaque(Url)</span>
                                     <div className="flex flex-row border border-gray-300 rounded-lg p-3 gap-3 items-center">
-                                        <input className="outline-none w-full" type="text" placeholder="Digite o URL da imagem de destaque..." />
+                                        <input className="outline-none w-full" type="text" value={mainImage} onChange={(e) => setMainImage(e.target.value)} placeholder="Digite o URL da imagem de destaque..." />
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +185,7 @@ export default function CreateNew() {
                             <span>Submeter para revisão</span>
                         </div>
                     </div>
-                </div>
+                </form>
             </main>
             <Footer />
         </div>
