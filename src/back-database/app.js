@@ -78,10 +78,12 @@ app.post('/signin', async (req, res) => {
 app.post('/create-new', async (req, res) => {
 
     try {
-        
-        const { title, mainImage, userId, categoryId, texts } = req.body
 
-        const result = await createNewController.createNew(title, mainImage, userId, categoryId, texts)
+        console.log("rodando: ", req.body)
+        
+        const { title, mainImage, userId, categoryId, texts, images } = req.body
+
+        const result = await createNewController.createNew(title, mainImage, userId, categoryId, texts, images)
         return res.status(201).json({ message: "new created successfully"})
     } catch (error) {
         console.log("full error", error)

@@ -2,7 +2,7 @@ import db from '../db.js'
 
 async function createNew(title, mainImage, userId, categoryId){
 
-    const query = "insert into News (title, main_image, views, adminId) values(?, ?, ?, ?)"
+    const query = "insert into News (title, main_image, user_id, category_id) values(?, ?, ?, ?)"
     return db.promise().query(query, [title, mainImage, userId, categoryId])
 }
 
@@ -16,5 +16,11 @@ async function createNewsImages(url, imageOrder, newId){
 
     const query = "insert into Images (url, image_order, newId) values(?, ?, ?)"
     return db.promise().query(query, [url, imageOrder, newId])
-    
+
+}
+
+export default {
+    createNew,
+    createNewsParagraphs,
+    createNewsImages
 }
