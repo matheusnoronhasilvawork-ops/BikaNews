@@ -29,9 +29,9 @@ export default function CreateNew() {
     const [mainImage, setMainImage] = useState<string>("")
     const [userId, setUserId] = useState<number>(1)
 
-    async function handleCreateNew(e:any) {
+    async function handleCreateNew(e: any) {
         e.preventDefault()
-        submitNew(title, mainImage, userId, categories.indexOf(selectedCategory), contents)
+        submitNew(title, mainImage, userId, categories.indexOf(selectedCategory) + 1, contents)
     }
 
     async function submitNew(title: string, mainImage: string, userId: number, categoryId: number, contents: content) {
@@ -39,30 +39,42 @@ export default function CreateNew() {
         const newTexts: texts = []
         const newImages: images = []
 
-        contents.forEach((content, index) => {
-            if (content.type === "paragraph") {
-                newTexts.push({ text: content.text, type: content.type, paragraph_order: index })
-            } else if (content.type === "subTitle") {
-                newTexts.push({ text: content.text, type: content.type, paragraph_order: index })
-            } else if (content.type === "image") {
-                newImages.push({ url: content.text, image_order: index })
+        try {
+
+            contents.forEach((content, index) => {
+                if (content.type === "paragraph") {
+                    newTexts.push({ text: content.text, type: content.type, paragraph_order: index })
+                } else if (content.type === "subTitle") {
+                    newTexts.push({ text: content.text, type: content.type, paragraph_order: index })
+                } else if (content.type === "image") {
+                    newImages.push({ url: content.text, image_order: index })
+                }
+            })
+
+            const data = {
+                title: title,
+                mainImage: mainImage,
+                userId: userId,
+                categoryId: categoryId,
+                texts: newTexts,
+                images: newImages
             }
-        })
 
-        const data = {
-            title: title,
-            mainImage: mainImage,
-            userid: userId,
-            categoryId: categoryId,
-            texts: newTexts,
-            images: newImages
+            console.log("data to submit", data)
+
+            const response = await axios.post("http://localhost:3000/create-new", data)
+
+            alert(response.data.message)
+        } catch (error: any) {
+            console.log("error", error)
+
+            const errorMessage={
+                status: error.response.status,
+                message: error.response.data.error
+            }
+
+            alert(`Erro: ${errorMessage.status} - ${errorMessage.message}`)
         }
-
-        console.log("data to submit", data)
-
-        const response = await axios.post("http://localhost:3000/createnew", data)
-
-        alert(response.data.message)
     }
 
     return (

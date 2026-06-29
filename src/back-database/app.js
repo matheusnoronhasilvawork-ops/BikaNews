@@ -87,7 +87,7 @@ app.post('/create-new', async (req, res) => {
         return res.status(201).json({ message: "new created successfully"})
     } catch (error) {
         console.log("full error", error)
-        return res.status(error.status).json({ error: error.message})
+        return res.status(error.status || 500).json({ error: error.message || "Internal Server Error"})
     }
 })
 app.listen(3000, () => {
