@@ -4,11 +4,14 @@ import signUpController from './controller/signup-controller.js';
 import signInController from './controller/signIn-controller.js'
 import createNewController from './controller/createNew-controller.js';
 import cors from 'cors';
+import upload from './multer.js';
 
 const app = express();
 app.use(express.json());
 
 app.use(cors());
+
+app.use("/uploads", express.static("uploads"));
 
 app.get('/teste', (req, res) => {
     res.send('Hello World!');
@@ -75,14 +78,22 @@ app.post('/signin', async (req, res) => {
 
 //------------------------ create news --------------------------
 
-app.post('/create-new', async (req, res) => {
+app.post('/create-new', upload.fields([{ name: 'mainImage', maxCount: 1}, { name: 'images', maxCount: 10}]), async (req, res) => {
 
     try {
 
         console.log("rodando: ", req.body)
+        console.log("rodando file", req.files)
         
-        const { title, mainImage, userId, categoryId, texts, images } = req.body
 
+        const { title, userId, categoryId, texts } = req.body
+
+        const mainImage = req.files.mainImage[0].filename
+
+        const images = req.files.images.map( image => image.filename)
+
+        console.log(mainImage)
+        console.log(images)
         const result = await createNewController.createNew(title, mainImage, userId, categoryId, texts, images)
         return res.status(201).json({ message: "new created successfully"})
     } catch (error) {
